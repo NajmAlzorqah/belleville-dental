@@ -49,25 +49,28 @@ header {
   border-bottom: 2px solid #000000;
 }
 
-/* ====
-media
-==== */
-@media (max-width: 900px) {
-  .header-container {
-    flex-direction: column;
-  }
 
-  .links-container {
-    width: 100%;
-  }
 
-  .links-container ul {
-    flex-direction: column;
-    text-align: center;
-  }
 
-  .links-container li {
-    margin: .5em 0;
-  }
+/*=============================================== Media Queries =====================================================*/ 
+
+/* Laptop & Desktop with Standard Screen */
+@media only screen and (min-width: 1024px) and (max-width: 1439px) {
+  /* Your CSS styles for laptops with standard screens */
 }
+
+
+/* Standard Tablet */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  /* Your CSS styles for standard tablets */
+}
+
+
+/* Standard Mobile */
+@media only screen and (min-width: 375px) and (max-width: 413px) {
+  /* Your CSS styles for standard mobile devices */
+}
+
+
+
 

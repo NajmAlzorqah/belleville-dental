@@ -9,59 +9,15 @@
 }
 
 body {
-  margin: 0;
+  box-sizing: border-box;
 }
 
-/* the header style */
-header {
-  background: var(--dark-blue);
-  padding: 1em 0;
-  box-shadow: 0 1px 2px black;
-  /* important */
-  margin: 0;
-}
 
-.header-container {
-  width: 80%;
-  max-width: 1230px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  /* border: 3px solid red; */
-}
 
-.links-container ul {
-  list-style: none;
-  display: flex;
-  padding: 0;
-  justify-content: space-between;
-  width: 100%;
-  /* border: 3px solid red; */
-}
 
-.links-container li {
-  margin-left: 1em;
-  /* margin-top: 1em; */
-}
 
-.links-container a {
-  text-decoration: none;
-  color: #000000;
-  font-weight: 700;
-  /* padding: .25em 0; */
-}
 
-.links-container a:hover {
-  color: #ff0000;
-}
 
-.links-container a:visited {
-  color: #ff0000;
-}
-
-.links-container a:focus {
-  border-bottom: 2px solid #000000;
-}
 
 /*=============================================== Media Queries =====================================================*/
 

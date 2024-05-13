@@ -1,10 +1,20 @@
+:root {
+  --dark-blue: #001869;
+  --light-blue: #00ccff;
+  --dark-green: #2e6d56;
+  --light-green: #c1dcd3;
+  --black: #303030;
+  --white: #ffffff;
+  --gray: #aaaaaa;
+}
+
 body {
   margin: 0;
 }
 
 /* the header style */
 header {
-  background: #c78bff;
+  background: var(--dark-blue);
   padding: 1em 0;
   box-shadow: 0 1px 2px black;
   /* important */
@@ -45,32 +55,27 @@ header {
   color: #ff0000;
 }
 
+.links-container a:visited {
+  color: #ff0000;
+}
+
 .links-container a:focus {
   border-bottom: 2px solid #000000;
 }
 
-
-
-
-/*=============================================== Media Queries =====================================================*/ 
+/*=============================================== Media Queries =====================================================*/
 
 /* Laptop & Desktop with Standard Screen */
 @media only screen and (min-width: 1024px) and (max-width: 1439px) {
   /* Your CSS styles for laptops with standard screens */
 }
 
-
 /* Standard Tablet */
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   /* Your CSS styles for standard tablets */
 }
 
-
 /* Standard Mobile */
 @media only screen and (min-width: 375px) and (max-width: 413px) {
   /* Your CSS styles for standard mobile devices */
 }
-
-
-
-

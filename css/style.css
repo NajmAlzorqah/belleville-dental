@@ -7,6 +7,9 @@
   --white: #f1f1f1;
   --gray: #aaaaaa;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 * {
   margin: 0;
@@ -17,6 +20,144 @@
 body {
   background-color: #f1f1f1;
 }
+@font-face {
+  font-family: heboo;
+  src: url(/fonts/Heebo-VariableFont_wght.ttf);
+}
+
+
+/*--------------------------  NAVIGATION BAR --------------------------*/
+.home-page {
+  height: 100vh;
+  /* background-color: #001869; */
+  position: relative;
+}
+@media (max-width: 1250px) {
+  .navigation-bar {
+    /* background-color: blue; */
+    padding: 0px;
+  }
+  .navigation-bar > ul > li > a {
+    font-size: .90rem;
+  }
+
+}
+.navigation-bar {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  padding-inline: 8%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(103, 248, 207);
+  height: 10vh;
+}
+.navigation-bar > ul {
+  /* position: absolute; */
+  text-align: center;
+  font-family: heboo;
+  /* flex-direction: row-reverse; */
+  /* justify-content: flex-end; */
+  justify-content: space-around;
+  list-style: none;
+  display: flex;
+  /* gap: 3%; */
+  width: 60%;
+  /* width: fixed; */
+  font-size: 1.1rem;
+  transition: all .5s;
+  /* padding-block: .50rem; */
+  /* background-color: rgb(214, 171, 255); */
+}
+/* .navigation-bar > ul > li > a:visited {
+  
+} */
+
+.navigation-bar > ul > li > a {
+  border-bottom: 2px solid transparent;
+  transition: all .5s;
+}
+.navigation-bar > ul > li > a:hover {
+  font-weight: bold;
+  color: #001869;
+  padding: 0px;
+  margin: 0px;
+  border-bottom: 2px solid #001869;
+}
+/* left container */
+.left-container {
+  /* position: relative; */
+  display: flex;
+  /* align-items: center; */
+  /* background-color: #2e6d56; */
+  width: 30%;
+  gap: 15%;
+  height: 30px;
+  /* justify-content: center; */
+  /* overflow: hidden; */
+}
+.visitors-count {
+  display: flex;
+  height: 100%;
+  /* width: 100%; */
+  gap: 10px;
+  /* align-items: center; */
+  /* justify-items: center; */
+  /* justify-content: space-between; */
+  padding-inline: 4%;
+  align-items: center;
+  background-color: black;
+  border-radius: 50px;
+}
+.visitors-count > img {
+  height: 70%;
+}
+.visitors-count > p {
+  color: white;
+  /* font-size: 100%; */
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo > a {
+  /* position: relative; */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo > a > p {
+  /* margin-top: 10px; */
+  font-size: 1.7rem;
+  font-family: heboo, 'Times New Roman', Times, serif;
+  font-weight: 200;
+  /* letter-spacing: 2px; */
+}
+.logo > a > p > span {
+  /* display: inline-block; */
+  font-size: 1.8rem;
+  font-weight: 900;
+  
+}
+.logo > a > img {
+  height: 50px;
+  /* margin-bottom: 7px; */
+}
+*{
+  /* outline: 2px solid red; */
+}
+ /* الكود مخبوص لحد يعس */
+
+
+/*---------------------  END of NAVIGATION BAR --------------------------*/
+
+
+
+
 a {
   text-decoration: none;
   color: #000;

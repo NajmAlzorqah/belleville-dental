@@ -1,90 +1,122 @@
-/*======== Creating Dynamic Professional JS Code From Json File =====================*/
-
 document.addEventListener("DOMContentLoaded", function () {
-  // Fetch the JSON data
-  fetch("professional_data.json")
-    .then((response) => response.json())
+  // Fetch the JSON data from the server
+  fetch("data.json")
+    .then((response) => response.json()) // Parse the JSON response
     .then((data) => {
-      // Get the container element where items will be appended
-      var professionalList = document.querySelector(".professional-list");
-
-      // Iterate through each item in the JSON data
-      data.items.forEach(function (item) {
-        // Create elements for each item
+      // Function to create HTML elements for each item
+      function createItemElement(item) {
         var itemDiv = document.createElement("div");
         itemDiv.classList.add("item", item.type);
 
         var img = document.createElement("img");
         img.src = item.image;
-        img.alt = "";
+        img.alt = item.alt;
 
         var infoDiv = document.createElement("div");
         infoDiv.classList.add("info");
 
         var contentDiv = document.createElement("div");
         contentDiv.innerHTML = `
-                <h3>${item.title}</h3>
-                <p>${item.content}</p>
-            `;
+                    <h3>${item.title}</h3>
+                    <p>${item.content}</p>
+                `;
 
-        var viewDiv = document.createElement("div");
-        viewDiv.innerHTML = `<a href="#">view more</a>`;
-        viewDiv.classList.add("view-more");
+        var readDiv = document.createElement("div");
+        readDiv.innerHTML = `<a href="#">Read More</a> <img src="../images/arrow-icon.png"></img>`;
+        readDiv.classList.add("read-more");
 
         // Append elements to the item container
         infoDiv.appendChild(contentDiv);
         itemDiv.appendChild(img);
         itemDiv.appendChild(infoDiv);
-        itemDiv.appendChild(viewDiv); // Append viewDiv to itemDiv
-        professionalList.appendChild(itemDiv);
+        itemDiv.appendChild(readDiv);
+
+        return itemDiv;
+      }
+
+      // Get the container element where items will be appended
+      var professionalList = document.querySelector(".professional-list");
+
+      // Function to display items based on filter with animations
+      function displayItems(items) {
+        // Clear previous items
+        professionalList.innerHTML = "";
+
+        // Display items with fadeIn animation
+        items.slice(0, 3).forEach(function (item) {
+          var itemElement = createItemElement(item);
+          professionalList.appendChild(itemElement);
+        });
+
+        // Trigger reflow to apply initial opacity transition
+        void professionalList.offsetWidth;
+
+        // Add class to trigger fadeIn animation
+        professionalList.querySelectorAll(".item").forEach(function (item) {
+          item.classList.add("show");
+        });
+      }
+
+      // Display all items initially
+      function displayInitialItems() {
+        displayItems(data.items.slice(0, 3)); // Display the first 3 items initially
+      }
+
+      // Function to handle filtering with animations
+      function handleFiltering(event) {
+        event.preventDefault();
+        var filterValue = this.getAttribute("data-filter");
+        var filteredItems = data.items.filter(function (item) {
+          return filterValue === "all" || item.type === filterValue;
+        });
+
+        // Limit the number of items displayed on small screens
+        var maxItems = window.innerWidth <= 413 ? 3 : 4;
+
+        // Add hide class to trigger fadeOut animation
+        professionalList.querySelectorAll(".item").forEach(function (item) {
+          item.classList.add("hide");
+        });
+
+        // Wait for fadeOut animation to complete
+        setTimeout(function () {
+          // Clear previous items
+          professionalList.innerHTML = "";
+
+          // Display filtered items with fadeIn animation
+          filteredItems.slice(0, maxItems).forEach(function (item) {
+            var itemElement = createItemElement(item);
+            professionalList.appendChild(itemElement);
+          });
+
+          // Trigger reflow to apply initial opacity transition
+          void professionalList.offsetWidth;
+
+          // Add class to trigger fadeIn animation
+          professionalList.querySelectorAll(".item").forEach(function (item) {
+            item.classList.add("show");
+          });
+        }, 500); // Adjust the delay to match the duration of the fadeOut animation
+      }
+
+      // Get all the filter links
+      var filterLinks = document.querySelectorAll(".filter-link");
+
+      // Display initial items when the filter icon is clicked
+      var filterIcon = document.querySelector(".category img");
+      filterIcon.addEventListener("click", function () {
+        displayInitialItems();
+      });
+
+      // Display all items initially
+      displayInitialItems();
+
+      // Add click event listeners to the filter links
+      filterLinks.forEach(function (link) {
+        link.addEventListener("click", handleFiltering);
       });
     })
     .catch((error) => {
       console.error("Error fetching JSON data:", error);
     });
-});
-
-/*======== Filtering Professional JS Code=====================*/
-document.addEventListener("DOMContentLoaded", function () {
-  // Get all the filter links
-  var filterLinks = document.querySelectorAll(".filter-link");
-
-  // Function to handle filtering
-  function handleFiltering(event) {
-    event.preventDefault();
-    var filterValue = this.getAttribute("data-filter");
-    var itemsToShow = filterValue === "all" ? 4 : 8;
-    var items = document.querySelectorAll(".item");
-
-    // Show up to 8 items of the clicked filter and hide others
-    var displayedItems = 0;
-    items.forEach(function (item) {
-      if (displayedItems < itemsToShow) {
-        if (filterValue === "all" || item.classList.contains(filterValue)) {
-          item.style.display = "block";
-          displayedItems++;
-        } else {
-          item.style.display = "none";
-        }
-      } else {
-        item.style.display = "none";
-      }
-    });
-  }
-
-  // Add click event listeners to the filter links
-  filterLinks.forEach(function (link) {
-    link.addEventListener("click", handleFiltering);
-  });
-
-  // Initially show the first 4 items
-  var initialItems = document.querySelectorAll(".item");
-  var initialItemsToShow = 4;
-  initialItems.forEach(function (item, index) {
-    if (index < initialItemsToShow) {
-      item.style.display = "block";
-    } else {
-      item.style.display = "none";
-    }
-  });
 });

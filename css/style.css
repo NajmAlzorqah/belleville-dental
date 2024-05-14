@@ -25,18 +25,35 @@ a {
 img {
   object-fit: cover;
 }
-
+/* ======================Professional Styles================================================================================== */
 h2.separator {
   padding: 0 80px;
   font-size: 40px;
   margin-top: 40px;
 }
 
+.professional,
+.professional .professional-list {
+  margin: 0 auto;
+  width: 90%;
+}
+
 .professional .category {
   width: 90%;
   margin: 20px auto 0;
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 14px;
+  font-size: 14px;
+  animation: fade-down 0.5s ease forwards;
+  opacity: 0;
+}
+
+.professional .category img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }
 
 .professional .category a {
@@ -54,10 +71,8 @@ h2.separator {
 
 .professional .professional-list {
   padding: 40px 0;
-  width: 90%;
-  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   justify-content: space-between;
   gap: 20px;
 }
@@ -67,15 +82,21 @@ h2.separator {
   border-radius: 18px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  animation: fade-up 0.5s ease forwards;
+  opacity: 0;
+  /* height: 80%; */
 }
 
 .professional .professional-list .item:hover {
   box-shadow: none;
 }
 
-.professional .professional-list .item img {
-  width: 280px;
-  height: 280px;
+.professional .professional-list .item > img {
+  width: 100%;
+  height: 150px;
   border-radius: 18px;
 }
 
@@ -86,6 +107,7 @@ h2.separator {
   padding: 12px 0;
   border-bottom: 1px solid #edecec;
   text-align: justify;
+  overflow: hidden;
 }
 
 .professional .professional-list .item .info h3 {
@@ -93,29 +115,135 @@ h2.separator {
   margin-bottom: 25px;
 }
 
-.professional .professional-list .item .view-more {
+.professional .professional-list .item .read-more {
+  position: relative;
   margin-top: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  transition: 0.3s;
+  animation: scale-up-center;
+  border-radius: 5px;
+}
+
+.professional .professional-list .item .read-more::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--black);
+  transition: 0.3s;
+}
+
+.professional .professional-list .item .read-more:hover::before {
+  width: 100%;
+}
+
+.professional .professional-list .item .read-more img {
+  width: 30px;
+  height: 30px;
+}
+.professional .professional-list .item .read-more:hover {
+  background: var(--light-green);
+}
+
+@keyframes fade-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
+}
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
+}
+
+.scale-up-center {
+  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
+    both;
+  animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@-webkit-keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
 }
 
 /*=============================================== Media Queries =====================================================*/
 
-/* Laptop & Desktop with Standard Screen */
-@media only screen and (min-width: 1024px) and (max-width: 1439px) {
-  /* Your CSS styles for laptops with standard screens */
-}
-
 /* Standard Tablet */
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
+  /* ======================Professional Styles================================================================================== */
   h2.separator,
   .professional {
-    padding: 0 10%;
+    padding: 0 5%;
+  }
+
+  .professional .professional-list {
+    width: 95%;
+    margin: 0 auto;
+  }
+  .professional .category {
+    width: 95%;
+    flex-wrap: nowrap;
+    font-size: 10px;
   }
 }
 
 /* Standard Mobile */
 @media only screen and (min-width: 375px) and (max-width: 413px) {
+  /* ======================Professional Styles================================================================================== */
   h2.separator,
   .professional {
     padding: 0 5%;
+  }
+  .professional-list .item .info p,
+  .professional .category {
+    flex-wrap: nowrap;
+    width: 95%;
+    font-size: 8px;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    overflow-y: scroll;
+  }
+
+  .professional .professional-list {
+    width: 95%;
+  }
+  .professional .category {
+    font-size: 10px;
   }
 }

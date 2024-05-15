@@ -431,6 +431,7 @@ h2.separator {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-width: 90%;
   margin: 40px auto;
+  border-radius: 20px;
 }
 
 .about-us-picture-container {

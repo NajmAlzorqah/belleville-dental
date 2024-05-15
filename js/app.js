@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 `;
 
         var readDiv = document.createElement("div");
-        readDiv.innerHTML = `<a href="#">Read More</a> <img src="../images/arrow-icon.png"></img>`;
+        readDiv.innerHTML = `<a href="#">Read More</a> <img src="../images/icons/arrow-right.png"></img>`;
         readDiv.classList.add("read-more");
 
         // Append elements to the item container

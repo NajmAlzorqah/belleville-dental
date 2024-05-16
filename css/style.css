@@ -43,13 +43,15 @@ body {
 
 /*--------------------------  NAVIGATION BAR --------------------------*/
 /* -------- NAVIGATION TOGGLE ---------- */
-
+*{
+  /* outline: 2px solid red; */
+}
 .ham {
   display: none;
   position: absolute;
   z-index: 99999;
   right: 5%;
-  top: -8px;
+  /* top: 1%; */
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   transition: transform 400ms;
@@ -132,7 +134,7 @@ body {
   }
   .navigation-bar > .links > ul{
     /* height: 100vh; */
-
+    height: 100%;
     flex-direction: column;
     text-align: unset !important;
     padding: min(30vh) 2rem;
@@ -276,6 +278,7 @@ body {
   height: 50px;
   /* margin-bottom: 7px; */
 }
+
  /* الكود مخبوص لحد يعس */
 
 /*---------------------  END of NAVIGATION BAR --------------------------*/

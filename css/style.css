@@ -27,13 +27,15 @@ body {
   font-family: heboo;
   src: url(/fonts/Heebo-VariableFont_wght.ttf);
 }
+
 /*--------------------------  HOME PAGE --------------------------*/
 .home-page {
   position: relative;
   height: 100vh;
   /* background-color: #001869; */
 }
-.home-page > .home-page-componants {
+
+.home-page>.home-page-componants {
   background-image: url(/images/icons/light-logo-icon.png);
   height: 100%;
   width: 100%;
@@ -44,9 +46,10 @@ body {
 
 /*--------------------------  NAVIGATION BAR --------------------------*/
 /* -------- NAVIGATION TOGGLE ---------- */
-*{
+* {
   /* outline: 2px solid red; */
 }
+
 .ham {
   
   display: none;
@@ -63,79 +66,95 @@ body {
   user-select: none;
   transform: scale(.8);
 }
+
 .hamRotate.active {
   transform: rotate(45deg);
 }
+
 .hamRotate180.active {
   transform: rotate(180deg);
 }
+
 .line {
-  fill:none;
+  fill: none;
   transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
-  stroke:#000;
-  stroke-width:5.5;
-  stroke-linecap:round;
+  stroke: #000;
+  stroke-width: 5.5;
+  stroke-linecap: round;
 }
+
 .ham8 .top {
   stroke-dasharray: 40 160;
 }
+
 .ham8 .middle {
   stroke-dasharray: 40 142;
   transform-origin: 50%;
   transition: transform 400ms;
 }
+
 .ham8 .bottom {
   stroke-dasharray: 40 85;
   transform-origin: 50%;
   transition: transform 400ms, stroke-dashoffset 400ms;
 }
+
 .ham8.active .top {
   stroke-dashoffset: -64px;
 }
+
 .ham8.active .middle {
   /* //stroke-dashoffset: -20px; */
   transform: rotate(90deg);
 }
+
 .ham8.active .bottom {
   stroke-dashoffset: -64px;
 }
+
 /* -------- END of NAVIGATION TOGGLE ---------- */
 
 @media (max-width: 1250px) {
-  
+
   .navigation-bar {
-    padding-inline: 4% !important; 
+    padding-inline: 4% !important;
     /* background-color: red !important; */
     gap: 10%;
     /* transition: all .5s; */
   }
-  .navigation-bar > .links > ul > li > a {
+
+  .navigation-bar>.links>ul>li>a {
     /* background-color: blue; */
     font-size: .90rem;
   }
+
   .left-container {
     transform: scale(0.8);
     transition: all .5s ease;
 
   }
 }
+
 @media (max-width: 980px) {
   .ham {
     display: block;
     position: fixed;
   }
+
   .visitors-count {
     display: none !important;
   }
-  .navigation-bar > .links {
+
+  .navigation-bar>.links {
     position: fixed;
     inset: 0 0 0 40%;
     /* right: 0px; */
     /* background-color: #00ccff; */
     width: unset !important;
   }
+
   /* /////////////////////////////////////////////////////////////////////////////// */
-  .navigation-bar > .links > ul{
+  .navigation-bar>.links>ul {
     /* height: 100vh; */
     position: fixed;
     background-color: red;
@@ -159,25 +178,29 @@ body {
     transform: translateX(0%) !important;
 
   }
-  .navigation-bar > .links > ul > li > a {
+
+  .navigation-bar>.links>ul>li>a {
     font-size: 1.25rem !important;
   }
+
   .navigation-bar {
-    padding: 0px  !important;
-    
+    padding: 0px !important;
+
   }
 }
 
 @media (max-width: 600px) {
-  .logo > a > p{
+  .logo>a>p {
     display: none !important;
   }
+
   .left-container {
     align-items: center !important;
     justify-content: center !important;
   }
 
 }
+
 .navigation-bar {
   /* overflow: hidden; */
   z-index: 9999;
@@ -205,7 +228,8 @@ body {
   width: 60%;
   /* padding-top: 20%; */
 }
-.navigation-bar > .links > ul {
+
+.navigation-bar>.links>ul {
   /* position: absolute; */
   text-align: center;
   font-family: heboo;
@@ -225,6 +249,7 @@ body {
   /* padding-block: .50rem; */
   /* background-color: rgb(214, 171, 255); */
 }
+
 /* .navigation-bar > ul > li > a:visited {
   
 } */
@@ -232,26 +257,22 @@ body {
   /* position: relative; */
   /* top: -110px; */
 }
-.navigation-bar > .links > ul > li {
 
+.navigation-bar>.links>ul>li {}
 
-
-
-
-
-
-}
-.navigation-bar > .links > ul > li > a {
+.navigation-bar>.links>ul>li>a {
   border-bottom: 2px solid transparent;
   transition: all .5s;
 }
-.navigation-bar > .links > ul > li > a:hover {
+
+.navigation-bar>.links>ul>li>a:hover {
   font-weight: bold;
   color: #001869;
   padding: 0px;
   margin: 0px;
   border-bottom: 2px solid #001869;
 }
+
 /* left container */
 .left-container {
   /* position: relative; */
@@ -264,6 +285,7 @@ body {
   /* justify-content: center; */
   /* overflow: hidden; */
 }
+
 .visitors-count {
   display: flex;
   height: 100%;
@@ -277,47 +299,53 @@ body {
   background-color: #001869;
   border-radius: 50px;
 }
-.visitors-count > img {
+
+.visitors-count>img {
   height: 70%;
 }
-.visitors-count > p {
+
+.visitors-count>p {
   color: white;
   /* font-size: 100%; */
   font-weight: 900;
   letter-spacing: 2px;
 }
+
 .logo {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.logo > a {
+
+.logo>a {
   /* position: relative; */
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.logo > a > p {
+.logo>a>p {
   /* margin-top: 10px; */
   font-size: 1.7rem;
   font-family: heboo, 'Times New Roman', Times, serif;
   font-weight: 200;
   /* letter-spacing: 2px; */
 }
-.logo > a > p > span {
+
+.logo>a>p>span {
   /* display: inline-block; */
   font-size: 1.8rem;
   font-weight: 900;
   color: #001869;
-  
+
 }
-.logo > a > img {
+
+.logo>a>img {
   height: 50px;
   /* margin-bottom: 7px; */
 }
 
- /* الكود مخبوص لحد يعس */
+/* الكود مخبوص لحد يعس */
 
 /*---------------------  END of NAVIGATION BAR --------------------------*/
 
@@ -371,7 +399,7 @@ body {
 }
 
 .about-us-content-container h2 span {
-  color: var(--dark-green);
+  color: var(--light-blue);
 }
 
 .about-us-content-container p {
@@ -392,15 +420,18 @@ body {
   cursor: pointer;
   /* width: 9rem; */
   max-width: 12rem;
-  margin: 35px 0 0 22px;
+  margin: 30px 0 0 22px;
   height: 3rem;
   letter-spacing: 2px;
   font-weight: 600;
   font-family: "Times New Roman", Times, serif;
+  font-size: larger;
 }
 
 .about-us-content-container button:hover {
   background-color: rgb(67, 62, 62);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
 }
 
 /*Standard Tablet */
@@ -584,7 +615,7 @@ h2.separator span {
   box-shadow: none;
 }
 
-.professional .professional-list .item > img {
+.professional .professional-list .item>img {
   width: 100%;
   height: 150px;
   border-radius: 18px;
@@ -668,8 +699,7 @@ h2.separator span {
 }
 
 .scale-up-center {
-  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
-    both;
+  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
@@ -696,4 +726,5 @@ h2.separator span {
     transform: scale(1);
   }
 }
+
 /* ===============================End Of Professional Section=================================================  */

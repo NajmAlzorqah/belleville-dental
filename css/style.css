@@ -48,11 +48,12 @@ body {
   /* outline: 2px solid red; */
 }
 .ham {
+  
   display: none;
   position: absolute;
   z-index: 99999;
   right: 5%;
-  top: 1%;
+  /* top: -10px; */
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   transition: transform 400ms;
@@ -136,10 +137,12 @@ body {
   /* /////////////////////////////////////////////////////////////////////////////// */
   .navigation-bar > .links > ul{
     /* height: 100vh; */
-    /* position: fixed; */
-    
-    /* top: 100px; */
+    position: fixed;
+    background-color: red;
+    top: 100px;
+    justify-content: flex-start !important;
     height: 200vh;
+    /* padding-top: 300px !important; */
     flex-direction: column;
     text-align: unset !important;
     padding: min(20vh) 2rem;
@@ -147,6 +150,9 @@ body {
     background: hsla(0, 0%, 100%, 0.1) !important;
     backdrop-filter: blur(1rem);
     transform: translateX(100%);
+  }
+  .burger-menu {
+    /* display: unset; */
   }
   
   .primary-navigation[data-visible = "true"] {
@@ -173,6 +179,7 @@ body {
 
 }
 .navigation-bar {
+  /* overflow: hidden; */
   z-index: 9999;
   position: fixed;
   top: 0px;
@@ -185,17 +192,29 @@ body {
   height: 10vh;
   background-color: white;
 }
+.burger-menu {
+  background-color: red;
+  width: 0%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .navigation-bar > .links {
   width: 60%;
-  padding-top: 20%;
+  /* padding-top: 20%; */
 }
 .navigation-bar > .links > ul {
   /* position: absolute; */
   text-align: center;
   font-family: heboo;
+  /* position: fixed; */
+  /* padding-top: 200px; */
+  top: 0px;
   /* flex-direction: row-reverse; */
-  /* justify-content: flex-end; */
-  /* justify-content: space-around; */
+  justify-content: flex-end;
+  justify-content: space-around;
   list-style: none;
   display: flex;
   /* gap: 3%; */
@@ -210,8 +229,8 @@ body {
   
 } */
 .primary-navigation {
-  position: relative;
-  top: -110px;
+  /* position: relative; */
+  /* top: -110px; */
 }
 .navigation-bar > .links > ul > li {
 

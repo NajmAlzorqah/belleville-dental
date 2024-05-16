@@ -134,6 +134,5 @@ navToggle.addEventListener('click', () => {
     primaryNav.setAttribute("data-visible", false);
   }
 })
-
 // ----------------END of NAVIGATION TOGGLE ---------------------
 

@@ -31,9 +31,10 @@ body {
 .home-page {
   position: relative;
   height: 100vh;
-  background-color: #001869;
+  /* background-color: #001869; */
 }
 .home-page > .home-page-componants {
+  background-image: url(/images/icons/light-logo-icon.png);
   height: 100%;
   width: 100%;
   background-color: rgb(255, 255, 255);
@@ -132,6 +133,7 @@ body {
     /* background-color: #00ccff; */
     width: unset !important;
   }
+  /* /////////////////////////////////////////////////////////////////////////////// */
   .navigation-bar > .links > ul{
     /* height: 100vh; */
     /* position: fixed; */
@@ -140,17 +142,13 @@ body {
     height: 200vh;
     flex-direction: column;
     text-align: unset !important;
-    padding: min(30vh) 2rem;
+    padding: min(20vh) 2rem;
     gap: 1.75rem !important;
     background: hsla(0, 0%, 100%, 0.1) !important;
     backdrop-filter: blur(1rem);
     transform: translateX(100%);
   }
-  .navigation-bar > .links > ul > li {
-    background-color: red;
-    /* position: fixed; */
-    /* top: 40px; */
-  }
+  
   .primary-navigation[data-visible = "true"] {
     transform: translateX(0%) !important;
 
@@ -189,6 +187,7 @@ body {
 }
 .navigation-bar > .links {
   width: 60%;
+  padding-top: 20%;
 }
 .navigation-bar > .links > ul {
   /* position: absolute; */
@@ -196,7 +195,7 @@ body {
   font-family: heboo;
   /* flex-direction: row-reverse; */
   /* justify-content: flex-end; */
-  justify-content: space-around;
+  /* justify-content: space-around; */
   list-style: none;
   display: flex;
   /* gap: 3%; */
@@ -210,7 +209,19 @@ body {
 /* .navigation-bar > ul > li > a:visited {
   
 } */
+.primary-navigation {
+  position: relative;
+  top: -110px;
+}
+.navigation-bar > .links > ul > li {
 
+
+
+
+
+
+
+}
 .navigation-bar > .links > ul > li > a {
   border-bottom: 2px solid transparent;
   transition: all .5s;

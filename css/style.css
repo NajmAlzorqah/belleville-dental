@@ -51,7 +51,7 @@ body {
   position: absolute;
   z-index: 99999;
   right: 5%;
-  /* top: 1%; */
+  top: 1%;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   transition: transform 400ms;
@@ -134,7 +134,10 @@ body {
   }
   .navigation-bar > .links > ul{
     /* height: 100vh; */
-    height: 100%;
+    /* position: fixed; */
+    
+    /* top: 100px; */
+    height: 200vh;
     flex-direction: column;
     text-align: unset !important;
     padding: min(30vh) 2rem;
@@ -142,6 +145,11 @@ body {
     background: hsla(0, 0%, 100%, 0.1) !important;
     backdrop-filter: blur(1rem);
     transform: translateX(100%);
+  }
+  .navigation-bar > .links > ul > li {
+    background-color: red;
+    /* position: fixed; */
+    /* top: 40px; */
   }
   .primary-navigation[data-visible = "true"] {
     transform: translateX(0%) !important;

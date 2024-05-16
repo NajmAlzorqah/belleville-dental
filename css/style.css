@@ -49,7 +49,7 @@ body {
   position: absolute;
   z-index: 99999;
   right: 5%;
-  /* top: -10px; */
+  top: -8px;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   transition: transform 400ms;
@@ -118,6 +118,7 @@ body {
 @media (max-width: 980px) {
   .ham {
     display: block;
+    position: fixed;
   }
   .visitors-count {
     display: none !important;

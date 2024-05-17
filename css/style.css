@@ -35,7 +35,7 @@ body {
   /* background-color: #001869; */
 }
 
-.home-page>.home-page-componants {
+.home-page > .home-page-componants {
   background-image: url(/images/icons/light-logo-icon.png);
   height: 100%;
   width: 100%;
@@ -51,7 +51,6 @@ body {
 }
 
 .ham {
-  
   display: none;
   position: absolute;
   z-index: 99999;
@@ -64,7 +63,7 @@ body {
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  transform: scale(.8);
+  transform: scale(0.8);
 }
 
 .hamRotate.active {
@@ -115,7 +114,6 @@ body {
 /* -------- END of NAVIGATION TOGGLE ---------- */
 
 @media (max-width: 1250px) {
-
   .navigation-bar {
     padding-inline: 4% !important;
     /* background-color: red !important; */
@@ -123,15 +121,14 @@ body {
     /* transition: all .5s; */
   }
 
-  .navigation-bar>.links>ul>li>a {
+  .navigation-bar > .links > ul > li > a {
     /* background-color: blue; */
-    font-size: .90rem;
+    font-size: 0.9rem;
   }
 
   .left-container {
     transform: scale(0.8);
-    transition: all .5s ease;
-
+    transition: all 0.5s ease;
   }
 }
 
@@ -145,7 +142,7 @@ body {
     display: none !important;
   }
 
-  .navigation-bar>.links {
+  .navigation-bar > .links {
     position: fixed;
     inset: 0 0 0 40%;
     /* right: 0px; */
@@ -154,7 +151,7 @@ body {
   }
 
   /* /////////////////////////////////////////////////////////////////////////////// */
-  .navigation-bar>.links>ul {
+  .navigation-bar > .links > ul {
     /* height: 100vh; */
     position: fixed;
     background-color: red;
@@ -173,24 +170,22 @@ body {
   .burger-menu {
     /* display: unset; */
   }
-  
-  .primary-navigation[data-visible = "true"] {
-    transform: translateX(0%) !important;
 
+  .primary-navigation[data-visible="true"] {
+    transform: translateX(0%) !important;
   }
 
-  .navigation-bar>.links>ul>li>a {
+  .navigation-bar > .links > ul > li > a {
     font-size: 1.25rem !important;
   }
 
   .navigation-bar {
     padding: 0px !important;
-
   }
 }
 
 @media (max-width: 600px) {
-  .logo>a>p {
+  .logo > a > p {
     display: none !important;
   }
 
@@ -198,7 +193,6 @@ body {
     align-items: center !important;
     justify-content: center !important;
   }
-
 }
 
 .navigation-bar {
@@ -229,7 +223,7 @@ body {
   /* padding-top: 20%; */
 }
 
-.navigation-bar>.links>ul {
+.navigation-bar > .links > ul {
   /* position: absolute; */
   text-align: center;
   font-family: heboo;
@@ -245,7 +239,7 @@ body {
   width: 100%;
   /* width: fixed; */
   font-size: 1.1rem;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
   /* padding-block: .50rem; */
   /* background-color: rgb(214, 171, 255); */
 }
@@ -258,14 +252,15 @@ body {
   /* top: -110px; */
 }
 
-.navigation-bar>.links>ul>li {}
-
-.navigation-bar>.links>ul>li>a {
-  border-bottom: 2px solid transparent;
-  transition: all .5s;
+.navigation-bar > .links > ul > li {
 }
 
-.navigation-bar>.links>ul>li>a:hover {
+.navigation-bar > .links > ul > li > a {
+  border-bottom: 2px solid transparent;
+  transition: all 0.5s;
+}
+
+.navigation-bar > .links > ul > li > a:hover {
   font-weight: bold;
   color: #001869;
   padding: 0px;
@@ -300,11 +295,11 @@ body {
   border-radius: 50px;
 }
 
-.visitors-count>img {
+.visitors-count > img {
   height: 70%;
 }
 
-.visitors-count>p {
+.visitors-count > p {
   color: white;
   /* font-size: 100%; */
   font-weight: 900;
@@ -317,30 +312,29 @@ body {
   align-items: center;
 }
 
-.logo>a {
+.logo > a {
   /* position: relative; */
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.logo>a>p {
+.logo > a > p {
   /* margin-top: 10px; */
   font-size: 1.7rem;
-  font-family: heboo, 'Times New Roman', Times, serif;
+  font-family: heboo, "Times New Roman", Times, serif;
   font-weight: 200;
   /* letter-spacing: 2px; */
 }
 
-.logo>a>p>span {
+.logo > a > p > span {
   /* display: inline-block; */
   font-size: 1.8rem;
   font-weight: 900;
   color: #001869;
-
 }
 
-.logo>a>img {
+.logo > a > img {
   height: 50px;
   /* margin-bottom: 7px; */
 }
@@ -520,7 +514,7 @@ body {
 
 /* ===============================End Of About Us Section=================================================  */
 a {
-  text-decoration: none;
+  text-decoration: none !important;
   color: #000;
 }
 
@@ -615,7 +609,7 @@ h2.separator span {
   box-shadow: none;
 }
 
-.professional .professional-list .item>img {
+.professional .professional-list .item > img {
   width: 100%;
   height: 150px;
   border-radius: 18px;
@@ -699,7 +693,8 @@ h2.separator span {
 }
 
 .scale-up-center {
-  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
+    both;
   animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
@@ -728,3 +723,91 @@ h2.separator span {
 }
 
 /* ===============================End Of Professional Section=================================================  */
+
+/* ===============================Start Of Footer Section=================================================  */
+
+.footer {
+  background: var(--bs-footer-bg, #292838);
+  padding: 70px 0 40px;
+}
+
+.footer .logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer .logo > a {
+  /* position: relative; */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer .logo p:first-child {
+  /* margin-top: 10px; */
+  font-size: 1.7rem;
+  font-family: heboo, "Times New Roman", Times, serif;
+  font-weight: 200;
+  /* letter-spacing: 2px; */
+}
+
+.footer .logo > p > span {
+  /* display: inline-block; */
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #001869;
+}
+
+.footer .footer-social-icon-content .footer-social-icon {
+  color: rgba(255, 255, 255, 0.5);
+  transition: all 0.5s;
+}
+
+.footer .footer-social-icon-content .footer-social-icon:hover {
+  color: #fff;
+}
+
+.footer .footer-sub-menu li {
+  padding: 6px 0;
+}
+
+.footer .footer-sub-menu li .footer-link {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 15px;
+  transition: all 0.5s;
+}
+
+.footer .footer-sub-menu li .footer-link:hover {
+  color: #fff;
+  margin-left: 5px;
+}
+
+.footer-alt {
+  background: var(--bs-footer-alt-bg, #23222f);
+  padding: 10px 0;
+}
+
+.ticker {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#ticker {
+  display: inline-block;
+  animation: scrollTicker 15s linear infinite;
+}
+
+@keyframes scrollTicker {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* ===============================End Of Footer Section=================================================  */

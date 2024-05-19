@@ -23,10 +23,15 @@
   --gray: #aaaaaa;
 } */
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 8a461c455aa34998e652742081d9ae80b77baad9
 
 
-
+/* 666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666 */
 /* jashkjshdkajshdkajhsdkajhsdkjahskjdhaskjd */
+<<<<<<< HEAD
 @font-face {
   font-family: Quicksand;
   src: url(/fonts/Quicksand-VariableFont_wght.ttf);
@@ -35,6 +40,8 @@
   font-family: heboo;
   src: url(/fonts/Heebo-VariableFont_wght.ttf);
 }
+=======
+>>>>>>> 8a461c455aa34998e652742081d9ae80b77baad9
 html {
   scroll-behavior: smooth;
 }

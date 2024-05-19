@@ -8,6 +8,7 @@
   --gray: #aaaaaa;
 }
 
+/* hi from abdo */
 html {
   scroll-behavior: smooth;
 }
@@ -35,7 +36,7 @@ body {
   /* background-color: #001869; */
 }
 
-.home-page > .home-page-componants {
+.home-page>.home-page-componants {
   background-image: url(/images/icons/light-logo-icon.png);
   height: 100%;
   width: 100%;
@@ -121,7 +122,7 @@ body {
     /* transition: all .5s; */
   }
 
-  .navigation-bar > .links > ul > li > a {
+  .navigation-bar>.links>ul>li>a {
     /* background-color: blue; */
     font-size: 0.9rem;
   }
@@ -142,7 +143,7 @@ body {
     display: none !important;
   }
 
-  .navigation-bar > .links {
+  .navigation-bar>.links {
     position: fixed;
     inset: 0 0 0 40%;
     /* right: 0px; */
@@ -151,7 +152,7 @@ body {
   }
 
   /* /////////////////////////////////////////////////////////////////////////////// */
-  .navigation-bar > .links > ul {
+  .navigation-bar>.links>ul {
     /* height: 100vh; */
     position: fixed;
     background-color: red;
@@ -167,6 +168,7 @@ body {
     backdrop-filter: blur(1rem);
     transform: translateX(100%);
   }
+
   .burger-menu {
     /* display: unset; */
   }
@@ -175,7 +177,7 @@ body {
     transform: translateX(0%) !important;
   }
 
-  .navigation-bar > .links > ul > li > a {
+  .navigation-bar>.links>ul>li>a {
     font-size: 1.25rem !important;
   }
 
@@ -185,7 +187,7 @@ body {
 }
 
 @media (max-width: 600px) {
-  .logo > a > p {
+  .logo>a>p {
     display: none !important;
   }
 
@@ -209,6 +211,7 @@ body {
   height: 90px;
   background-color: white;
 }
+
 .burger-menu {
   background-color: red;
   width: 0%;
@@ -218,12 +221,13 @@ body {
   align-items: center;
   justify-content: center;
 }
-.navigation-bar > .links {
+
+.navigation-bar>.links {
   width: 60%;
   /* padding-top: 20%; */
 }
 
-.navigation-bar > .links > ul {
+.navigation-bar>.links>ul {
   /* position: absolute; */
   text-align: center;
   font-family: heboo;
@@ -252,15 +256,14 @@ body {
   /* top: -110px; */
 }
 
-.navigation-bar > .links > ul > li {
-}
+.navigation-bar>.links>ul>li {}
 
-.navigation-bar > .links > ul > li > a {
+.navigation-bar>.links>ul>li>a {
   border-bottom: 2px solid transparent;
   transition: all 0.5s;
 }
 
-.navigation-bar > .links > ul > li > a:hover {
+.navigation-bar>.links>ul>li>a:hover {
   font-weight: bold;
   color: #001869;
   padding: 0px;
@@ -295,11 +298,11 @@ body {
   border-radius: 50px;
 }
 
-.visitors-count > img {
+.visitors-count>img {
   height: 70%;
 }
 
-.visitors-count > p {
+.visitors-count>p {
   color: white;
   /* font-size: 100%; */
   font-weight: 900;
@@ -312,14 +315,14 @@ body {
   align-items: center;
 }
 
-.logo > a {
+.logo>a {
   /* position: relative; */
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.logo > a > p {
+.logo>a>p {
   /* margin-top: 10px; */
   font-size: 1.7rem;
   font-family: heboo, "Times New Roman", Times, serif;
@@ -327,14 +330,14 @@ body {
   /* letter-spacing: 2px; */
 }
 
-.logo > a > p > span {
+.logo>a>p>span {
   /* display: inline-block; */
   font-size: 1.8rem;
   font-weight: 900;
   color: #001869;
 }
 
-.logo > a > img {
+.logo>a>img {
   height: 50px;
   /* margin-bottom: 7px; */
 }
@@ -609,7 +612,7 @@ h2.separator span {
   box-shadow: none;
 }
 
-.professional .professional-list .item > img {
+.professional .professional-list .item>img {
   width: 100%;
   height: 150px;
   border-radius: 18px;
@@ -693,8 +696,7 @@ h2.separator span {
 }
 
 .scale-up-center {
-  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
-    both;
+  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
@@ -738,7 +740,7 @@ h2.separator span {
   align-items: center;
 }
 
-.footer .logo > a {
+.footer .logo>a {
   /* position: relative; */
   display: flex;
   align-items: center;
@@ -753,7 +755,7 @@ h2.separator span {
   /* letter-spacing: 2px; */
 }
 
-.footer .logo > p > span {
+.footer .logo>p>span {
   /* display: inline-block; */
   font-size: 1.8rem;
   font-weight: 900;

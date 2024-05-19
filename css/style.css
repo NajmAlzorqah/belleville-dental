@@ -1,13 +1,36 @@
 :root {
-  --dark-blue: #001869;
+  --black: #303030;
+  --white: #f1f1f1;
+  --gray: #aaaaaa;
+  --primary: #1e0342;
+  --secondry: #0e46a3;
+  --hover: #9ac8cd;
+  --light: #e1f7f5;
+
+  --primary: #001869;
+  --light-blue: #00ccff;
+  --dark-green: #2e6d56;
+  --light-green: #c1dcd3;
+}
+
+/* :root {
+  --primary: #001869;
   --light-blue: #00ccff;
   --dark-green: #2e6d56;
   --light-green: #c1dcd3;
   --black: #303030;
   --white: #f1f1f1;
   --gray: #aaaaaa;
-}
+} */
 
+@font-face {
+  font-family: Quicksand;
+  src: url(/fonts/Quicksand-VariableFont_wght.ttf);
+}
+@font-face {
+  font-family: heboo;
+  src: url(/fonts/Heebo-VariableFont_wght.ttf);
+}
 html {
   scroll-behavior: smooth;
 }
@@ -16,16 +39,11 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: heboo;
+  font-family: Quicksand;
 }
 
 body {
-  background-color: #f1f1f1;
-}
-
-@font-face {
-  font-family: heboo;
-  src: url(/fonts/Heebo-VariableFont_wght.ttf);
+  background-color: #e1f7f5;
 }
 
 /*--------------------------  HOME PAGE --------------------------*/
@@ -530,7 +548,7 @@ h2.separator {
 }
 
 h2.separator span {
-  color: var(--dark-blue);
+  color: var(--primary);
 }
 
 .professional {
@@ -626,7 +644,7 @@ h2.separator span {
 }
 
 .professional .professional-list .item .info h3 {
-  color: var(--dark-blue);
+  color: var(--primary);
   font-size: 18px;
   margin-bottom: 25px;
 }

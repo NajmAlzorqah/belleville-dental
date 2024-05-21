@@ -777,6 +777,146 @@ h2.separator span {
 
 /* ===============================End Of Professional Section=================================================  */
 
+
+/* ===============================Start Of Contact-Us Section=================================================  */
+#contact .container .row .col-lg-6 .text-center h3 {
+  margin-top: 50px;
+  text-shadow: 2px 2px 9px rgba(0, 0, 0, 0.395);
+  font-size: 40px;
+  animation: shake 5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(2px, 2px) rotate(0deg);
+  }
+
+  10% {
+    transform: translate(-2px, -4px) rotate(-1deg);
+  }
+
+  20% {
+    transform: translate(-6px, 0px) rotate(1deg);
+  }
+
+  30% {
+    transform: translate(6px, 4px) rotate(0deg);
+  }
+
+  40% {
+    transform: translate(2px, -2px) rotate(1deg);
+  }
+
+  50% {
+    transform: translate(-2px, 4px) rotate(-1deg);
+  }
+
+  60% {
+    transform: translate(-6px, 2px) rotate(0deg);
+  }
+
+  70% {
+    transform: translate(6px, 2px) rotate(-1deg);
+  }
+
+  80% {
+    transform: translate(-2px, -2px) rotate(1deg);
+  }
+
+  90% {
+    transform: translate(2px, 4px) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(2px, -2px) rotate(-1deg);
+  }
+}
+
+#contact .container .row .col-lg-6 .text-center h3 span {
+  color: #00ccff;
+  text-shadow: 2px 2px 9px #00ccff;
+}
+
+#contact {
+  margin-bottom: 55px;
+}
+
+#submit {
+  width: 185px;
+  height: 50px;
+  border-radius: 3px;
+  /* background-color: #5a4fdc !important; */
+  background-color: var(--primary);
+  border: 1px solid #5a4fdc !important;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(90, 79, 220, .15);
+  transition: 0.5s;
+}
+
+#submit:hover {
+  background-color: rgb(67, 62, 62);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.423);
+  background-color: #0a1536 !important;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  background-color: #fbfafd;
+  border-color: #ced4da;
+}
+
+textarea.form-control {
+  height: auto !important;
+}
+
+.custom-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.custom-form label {
+  margin-bottom: 10px;
+}
+
+.custom-form .alert-warning {
+  padding: 10px;
+}
+
+.form-control {
+  padding: 8px 10px;
+  font-size: 14px;
+  height: 40px;
+  background-color: rgba(59, 57, 80, 0.01);
+  border: 1px solid rgba(158, 156, 185, 0.3);
+}
+
+.form-control::-moz-placeholder {
+  color: #b0aec6;
+  font-size: 14px;
+}
+
+.form-control::placeholder {
+  color: #b0aec6;
+  font-size: 14px;
+}
+
+.contact-loader {
+  display: none;
+}
+
+#success_page {
+  background-color: rgba(20, 207, 159, 0.25);
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+[data-bs-theme=dark] .form-control:focus {
+  background-color: var(--bs-secondary-bg);
+  border: 1px solid rgba(158, 156, 185, 0.3);
+}
+
+/* ===============================End Of Contact-Us Section=================================================  */
 /* ===============================Start Of Footer Section=================================================  */
 
 .footer {

@@ -16,21 +16,70 @@ navToggle.addEventListener("click", () => {
 });
 // ----------------END of NAVIGATION TOGGLE ---------------------
 
-// ---------------- Start of Professional Education Filtering and Feching ---------------------
+//-----------------Smooth Scrolling with Offset Adjustment ----------------
+
+// Event listener for when the HTML document is fully loaded and parsed
 document.addEventListener("DOMContentLoaded", function () {
-  // This event listener waits for the HTML document to be fully loaded and parsed before executing the code inside it.
-  // Fetch the JSON data from the server
+  /**
+   * Function to handle smooth scrolling with offset adjustment
+   * @param {Event} event - The click event object
+   */
+  function smoothScroll(event) {
+    // Prevents the default behavior of the clicked link to avoid abrupt jumps
+    event.preventDefault();
+
+    // Extracts the target element's ID from the clicked link's href attribute
+    var targetId = this.getAttribute("href").substring(1);
+
+    // Retrieves the target element using its ID
+    var targetElement = document.getElementById(targetId);
+
+    // Adjust this value based on your fixed navbar height
+    var offset = 70;
+
+    if (targetElement) {
+      // Calculates the desired scroll position, adjusting for the fixed navbar's height
+      var elementPosition = targetElement.getBoundingClientRect().top;
+      var offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      // Scrolls to the calculated position smoothly
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  }
+
+  // Attach the smoothScroll function to navbar links
+  var navbarLinks = document.querySelectorAll(".navigation-bar a");
+  navbarLinks.forEach(function (link) {
+    link.addEventListener("click", smoothScroll);
+  });
+
+  // Attach the smoothScroll function to footer links
+  var footerLinks = document.querySelectorAll(".footer-link");
+  footerLinks.forEach(function (link) {
+    link.addEventListener("click", smoothScroll);
+  });
+});
+
+// ---------------- Start of Professional Education Filtering and Fetching ---------------------
+/**
+ * Fetch and Display Filtered Items from JSON Data
+ *
+ * This JavaScript code fetches data from a JSON file, creates HTML elements based on the data,
+ * and displays them on the webpage. It also provides filtering functionality to show specific
+ * items based on categories.
+ */
+
+// Event listener for when the HTML document is fully loaded and parsed
+document.addEventListener("DOMContentLoaded", function () {
+  // Fetch JSON data from the server
   fetch("data.json")
     .then((response) => response.json()) // Parse the JSON response
     .then((data) => {
-      // After fetching the JSON data successfully, this code runs.
       // Function to create HTML elements for each item
       function createItemElement(item) {
-        // This function takes an item from the JSON data and creates HTML elements to represent it.
-        // It creates a <div> element with class "item" and additional classes based on the item's type.
-        // Inside this <div>, it creates an <img> element for the item's image, a <div> for item info, and a "Read More" link.
-        // Then it appends these elements to the item container and returns it.
-
         var itemDiv = document.createElement("div");
         itemDiv.classList.add("item", item.type);
 
@@ -43,15 +92,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
         var contentDiv = document.createElement("div");
         contentDiv.innerHTML = `
-                    <h3>${item.title}</h3>
-                    <p>${item.content}</p>
-                `;
+          <h3>${item.title}</h3>
+          <p>${item.content}</p>
+        `;
 
         var readDiv = document.createElement("div");
-        readDiv.innerHTML = `<a href="#">Read More</a> <img src="../images/icons/arrow-right.png"></img>`;
+        readDiv.innerHTML = `<a href="#">Read More</a> <svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 viewBox="0 0 227.096 227.096" xml:space="preserve">
+<g>
+	<g>
+		<polygon style="fill:#010002;" points="152.835,39.285 146.933,45.183 211.113,109.373 0,109.373 0,117.723 211.124,117.723 
+			146.933,181.902 152.835,187.811 227.096,113.55 		"/>
+	</g>
+</g>
+</svg>`;
         readDiv.classList.add("read-more");
 
-        // Append elements to the item container
         infoDiv.appendChild(contentDiv);
         itemDiv.appendChild(img);
         itemDiv.appendChild(infoDiv);
@@ -65,98 +121,76 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Function to display items based on filter with animations
       function displayItems(items) {
-        // This function clears the previous items in the container and displays new items with animations.
-        // It creates HTML elements for each item using the createItemElement function and appends them to the container.
-        // It also adds animation classes to show the items with fadeIn effect.
-        // Clear previous items
         professionalList.innerHTML = "";
-
-        // Display items with fadeIn animation
         items.slice(0, 3).forEach(function (item) {
           var itemElement = createItemElement(item);
           professionalList.appendChild(itemElement);
         });
-
-        // Trigger reflow to apply initial opacity transition
         void professionalList.offsetWidth;
-
-        // Add class to trigger fadeIn animation
         professionalList.querySelectorAll(".item").forEach(function (item) {
           item.classList.add("show");
         });
       }
 
-      // Display all items initially
+      // Function to display initial items when the page loads
       function displayInitialItems() {
-        // This function displays the initial set of items when the page loads.
-        // It calls the displayItems function with the first 3 items from the JSON data.
         displayItems(data.items.slice(0, 3));
       }
 
-      // Function to handle filtering with animations
+      // Function to handle filtering of items
       function handleFiltering(event) {
-        // This function handles filtering items based on the selected filter.
-        // It gets the filter value from the clicked filter link and filters the items accordingly.
-        // Then it clears the container, displays the filtered items with animations, and applies fadeIn effect.
         event.preventDefault();
         var filterValue = this.getAttribute("data-filter");
         var filteredItems = data.items.filter(function (item) {
           return filterValue === "all" || item.type === filterValue;
         });
 
-        // Limit the number of items displayed on small screens
         var maxItems = window.innerWidth <= 413 ? 3 : 4;
-
-        // Add hide class to trigger fadeOut animation
         professionalList.querySelectorAll(".item").forEach(function (item) {
           item.classList.add("hide");
         });
 
-        // Wait for fadeOut animation to complete
         setTimeout(function () {
-          // Clear previous items
           professionalList.innerHTML = "";
-
-          // Display filtered items with fadeIn animation
           filteredItems.slice(0, maxItems).forEach(function (item) {
             var itemElement = createItemElement(item);
             professionalList.appendChild(itemElement);
           });
-
-          // Trigger reflow to apply initial opacity transition
           void professionalList.offsetWidth;
-
-          // Add class to trigger fadeIn animation
           professionalList.querySelectorAll(".item").forEach(function (item) {
             item.classList.add("show");
           });
-        }, 500); // Adjust the delay to match the duration of the fadeOut animation
+        }, 500);
+
+        // Remove 'active' class from all filter links and add it to the clicked link
+        filterLinks.forEach(function (link) {
+          link.classList.remove("active");
+        });
+        this.classList.add("active");
       }
 
       // Get all the filter links
       var filterLinks = document.querySelectorAll(".filter-link");
 
-      // Display initial items when the filter icon is clicked
+      // Event listener for clicking the filter icon to display initial items
       var filterIcon = document.querySelector(".category img");
       filterIcon.addEventListener("click", function () {
-        // This event listener triggers the displayInitialItems function when the filter icon is clicked.
         displayInitialItems();
       });
 
-      // Display all items initially
+      // Display initial items when the page loads
       displayInitialItems();
 
       // Add click event listeners to the filter links
       filterLinks.forEach(function (link) {
         link.addEventListener("click", handleFiltering);
-        // This code adds click event listeners to all filter links to handle filtering when clicked.
       });
     })
     .catch((error) => {
       console.error("Error fetching JSON data:", error);
-      // If there's an error fetching JSON data, this code logs the error to the console.
     });
 });
+
 // ---------------- End of Professional Education Filtering and Feching ---------------------
 
 // ----------------Start of Footer Ticker ---------------------
@@ -185,16 +219,16 @@ function updateTicker() {
             data.address.village ||
             "Unknown Location";
           // Extract the city from the location data.
-          tickerElement.innerHTML = `Year: ${year} | Time: ${time} | Location: ${city}`;
+          tickerElement.innerHTML = ` ${year} | ${time} | ${city}`;
           // Update the ticker content with the current date, time, and city.
         })
         .catch(() => {
-          tickerElement.innerHTML = `Year: ${year} | Time: ${time} | Location: Unknown`;
+          tickerElement.innerHTML = ` ${year} | ${time} | Location: Unknown`;
           // If an error occurs during fetching location data, display "Unknown" location in the ticker.
         });
     },
     () => {
-      tickerElement.innerHTML = `Year: ${year} | Time: ${time} | Location: Unknown`;
+      tickerElement.innerHTML = ` ${year} | ${time} | Location: Unknown`;
       // If geolocation is not supported or user denies access, display "Unknown" location in the ticker.
     }
   );
@@ -204,3 +238,9 @@ setInterval(updateTicker, 60000); // Update every minute
 updateTicker(); // Initial call
 
 // ----------------End of Footer Ticker ---------------------
+
+
+
+
+
+

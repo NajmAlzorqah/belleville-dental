@@ -213,6 +213,38 @@
       "alt": "pic of a orthodontist adjusting braces",
       "title": "Orthodontics",
       "content": "Overview: Orthodontics is the branch of dentistry that deals with the diagnosis, prevention, and treatment of malocclusions, or misalignments of the teeth and jaws."
+    },
+    {
+      "type": "toothpaste",
+      "image": "./images/products/toothpaste.jpg",
+      "alt": "Toothpaste",
+      "title": "Fresh Mint Toothpaste",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel sapien quis neque vehicula tempor. Fusce congue magna a risus rutrum, sed convallis arcu tincidunt.",
+      "rating": 4.5
+    },
+    {
+      "type": "brush",
+      "image": "./images/products/brush.jpg",
+      "alt": "Toothbrush",
+      "title": "Electric Toothbrush",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel sapien quis neque vehicula tempor. Fusce congue magna a risus rutrum, sed convallis arcu tincidunt.",
+      "rating": 4.2
+    },
+    {
+      "type": "special-products-for-kids",
+      "image": "./images/products/kids-products.jpg",
+      "alt": "Kids Dental Products",
+      "title": "Kids Dental Kit",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel sapien quis neque vehicula tempor. Fusce congue magna a risus rutrum, sed convallis arcu tincidunt.",
+      "rating": 4.8
+    },
+    {
+      "type": "electrical-accessories",
+      "image": "./images/products/accessories.jpg",
+      "alt": "Dental Accessories",
+      "title": "Dental Accessories Set",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel sapien quis neque vehicula tempor. Fusce congue magna a risus rutrum, sed convallis arcu tincidunt.",
+      "rating": 4.0
     }
   ]
 }

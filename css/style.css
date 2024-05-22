@@ -777,6 +777,112 @@ h2.separator span {
 
 /* ===============================End Of Professional Section=================================================  */
 
+/* ===============================Start Of Research Section=================================================  */
+#blog {
+  margin-bottom: 95px;
+}
+
+.title {
+  margin-top: 60px;
+  margin-bottom: 16px;
+  text-shadow: 2px 2px 9px rgba(0, 0, 0, 0.395);
+  font-size: 40px;
+  animation: shake2 5s;
+  animation-iteration-count: infinite;
+}
+
+.title span {
+  color: #00ccff;
+  text-shadow: 2px 2px 9px #00ccff;
+}
+
+@keyframes shake2 {
+  0% {
+    transform: translate(2px, 2px) rotate(0deg);
+  }
+
+  10% {
+    transform: translate(-2px, -4px) rotate(-1deg);
+  }
+
+  20% {
+    transform: translate(-6px, 0px) rotate(1deg);
+  }
+
+  30% {
+    transform: translate(6px, 4px) rotate(0deg);
+  }
+
+  40% {
+    transform: translate(2px, -2px) rotate(1deg);
+  }
+
+  50% {
+    transform: translate(-2px, 4px) rotate(-1deg);
+  }
+
+  60% {
+    transform: translate(-6px, 2px) rotate(0deg);
+  }
+
+  70% {
+    transform: translate(6px, 2px) rotate(-1deg);
+  }
+
+  80% {
+    transform: translate(-2px, -2px) rotate(1deg);
+  }
+
+  90% {
+    transform: translate(2px, 4px) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(2px, -2px) rotate(-1deg);
+  }
+}
+
+.row.flex-nowrap {
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+.row.flex-nowrap::-webkit-scrollbar {
+  display: none;
+}
+
+.col-lg-4 {
+  flex: 0 0 auto;
+  width: 300px;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-btn {
+  left: -20px;
+}
+
+.right-btn {
+  right: -20px;
+}
+
+/* ===============================The End Of Research Section=================================================  */
 
 /* ===============================Start Of Contact-Us Section=================================================  */
 #contact .container .row .col-lg-6 .text-center h3 {

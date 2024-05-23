@@ -64,6 +64,136 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 //----------------- End of Smooth Scrolling with Offset Adjustment ----------------
 
+// ---------------- Start of Professional Education Filtering and Fetching ---------------------
+/**
+ * Fetch and Display Filtered Items from JSON Data
+ *
+ * This JavaScript code fetches data from a JSON file, creates HTML elements based on the data,
+ * and displays them on the webpage. It also provides filtering functionality to show specific
+ * items based on categories.
+ */
+
+// Event listener for when the HTML document is fully loaded and parsed
+document.addEventListener("DOMContentLoaded", function () {
+  // Fetch JSON data from the server
+  fetch("data.json")
+    .then((response) => response.json()) // Parse the JSON response
+    .then((data) => {
+      // Function to create HTML elements for each item
+      function createItemElement(item) {
+        var itemDiv = document.createElement("div");
+        itemDiv.classList.add("item", item.type);
+
+        var img = document.createElement("img");
+        img.src = item.image;
+        img.alt = item.alt;
+
+        var infoDiv = document.createElement("div");
+        infoDiv.classList.add("info");
+
+        var contentDiv = document.createElement("div");
+        contentDiv.innerHTML = `
+          <h3>${item.title}</h3>
+          <p>${item.content}</p>
+        `;
+
+        var readDiv = document.createElement("div");
+        readDiv.innerHTML = `<a href="#">Read More</a> <svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 viewBox="0 0 227.096 227.096" xml:space="preserve">
+<g>
+	<g>
+		<polygon style="fill:#010002;" points="152.835,39.285 146.933,45.183 211.113,109.373 0,109.373 0,117.723 211.124,117.723 
+			146.933,181.902 152.835,187.811 227.096,113.55 		"/>
+	</g>
+</g>
+</svg>`;
+        readDiv.classList.add("read-more");
+
+        infoDiv.appendChild(contentDiv);
+        itemDiv.appendChild(img);
+        itemDiv.appendChild(infoDiv);
+        itemDiv.appendChild(readDiv);
+
+        return itemDiv;
+      }
+
+      // Get the container element where items will be appended
+      var professionalList = document.querySelector(".professional-list");
+
+      // Function to display items based on filter with animations
+      function displayItems(items) {
+        professionalList.innerHTML = "";
+        items.slice(0, 3).forEach(function (item) {
+          var itemElement = createItemElement(item);
+          professionalList.appendChild(itemElement);
+        });
+        void professionalList.offsetWidth;
+        professionalList.querySelectorAll(".item").forEach(function (item) {
+          item.classList.add("show");
+        });
+      }
+
+      // Function to display initial items when the page loads
+      function displayInitialItems() {
+        displayItems(data.items.slice(0, 3));
+      }
+
+      // Function to handle filtering of items
+      function handleFiltering(event) {
+        event.preventDefault();
+        var filterValue = this.getAttribute("data-filter");
+        var filteredItems = data.items.filter(function (item) {
+          return filterValue === "all" || item.type === filterValue;
+        });
+
+        var maxItems = window.innerWidth <= 413 ? 3 : 4;
+        professionalList.querySelectorAll(".item").forEach(function (item) {
+          item.classList.add("hide");
+        });
+
+        setTimeout(function () {
+          professionalList.innerHTML = "";
+          filteredItems.slice(0, maxItems).forEach(function (item) {
+            var itemElement = createItemElement(item);
+            professionalList.appendChild(itemElement);
+          });
+          void professionalList.offsetWidth;
+          professionalList.querySelectorAll(".item").forEach(function (item) {
+            item.classList.add("show");
+          });
+        }, 500);
+
+        // Remove 'active' class from all filter links and add it to the clicked link
+        filterLinks.forEach(function (link) {
+          link.classList.remove("active");
+        });
+        this.classList.add("active");
+      }
+
+      // Get all the filter links
+      var filterLinks = document.querySelectorAll(".filter-link");
+
+      // Event listener for clicking the filter icon to display initial items
+      var filterIcon = document.querySelector(".category img");
+      filterIcon.addEventListener("click", function () {
+        displayInitialItems();
+      });
+
+      // Display initial items when the page loads
+      displayInitialItems();
+
+      // Add click event listeners to the filter links
+      filterLinks.forEach(function (link) {
+        link.addEventListener("click", handleFiltering);
+      });
+    })
+    .catch((error) => {
+      console.error("Error fetching JSON data:", error);
+    });
+});
+
+// ---------------- End of Professional Education Filtering and Feching ---------------------
+
 // ---------------- Start of Products Filtering and Fetching ---------------------
 /**
  * Fetch and Display Filtered Items from JSON Data
@@ -261,137 +391,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // ---------------- End of Products Filtering and Fetching ---------------------
-
-// ---------------- Start of Professional Education Filtering and Fetching ---------------------
-/**
- * Fetch and Display Filtered Items from JSON Data
- *
- * This JavaScript code fetches data from a JSON file, creates HTML elements based on the data,
- * and displays them on the webpage. It also provides filtering functionality to show specific
- * items based on categories.
- */
-
-// Event listener for when the HTML document is fully loaded and parsed
-document.addEventListener("DOMContentLoaded", function () {
-  // Fetch JSON data from the server
-  fetch("data.json")
-    .then((response) => response.json()) // Parse the JSON response
-    .then((data) => {
-      // Function to create HTML elements for each item
-      function createItemElement(item) {
-        var itemDiv = document.createElement("div");
-        itemDiv.classList.add("item", item.type);
-
-        var img = document.createElement("img");
-        img.src = item.image;
-        img.alt = item.alt;
-
-        var infoDiv = document.createElement("div");
-        infoDiv.classList.add("info");
-
-        var contentDiv = document.createElement("div");
-        contentDiv.innerHTML = `
-          <h3>${item.title}</h3>
-          <p>${item.content}</p>
-        `;
-
-        var readDiv = document.createElement("div");
-        readDiv.innerHTML = `<a href="#">Read More</a> <svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-	 viewBox="0 0 227.096 227.096" xml:space="preserve">
-<g>
-	<g>
-		<polygon style="fill:#010002;" points="152.835,39.285 146.933,45.183 211.113,109.373 0,109.373 0,117.723 211.124,117.723 
-			146.933,181.902 152.835,187.811 227.096,113.55 		"/>
-	</g>
-</g>
-</svg>`;
-        readDiv.classList.add("read-more");
-
-        infoDiv.appendChild(contentDiv);
-        itemDiv.appendChild(img);
-        itemDiv.appendChild(infoDiv);
-        itemDiv.appendChild(readDiv);
-
-        return itemDiv;
-      }
-
-      // Get the container element where items will be appended
-      var professionalList = document.querySelector(".professional-list");
-
-      // Function to display items based on filter with animations
-      function displayItems(items) {
-        professionalList.innerHTML = "";
-        items.slice(0, 3).forEach(function (item) {
-          var itemElement = createItemElement(item);
-          professionalList.appendChild(itemElement);
-        });
-        void professionalList.offsetWidth;
-        professionalList.querySelectorAll(".item").forEach(function (item) {
-          item.classList.add("show");
-        });
-      }
-
-      // Function to display initial items when the page loads
-      function displayInitialItems() {
-        displayItems(data.items.slice(0, 3));
-      }
-
-      // Function to handle filtering of items
-      function handleFiltering(event) {
-        event.preventDefault();
-        var filterValue = this.getAttribute("data-filter");
-        var filteredItems = data.items.filter(function (item) {
-          return filterValue === "all" || item.type === filterValue;
-        });
-
-        var maxItems = window.innerWidth <= 413 ? 3 : 4;
-        professionalList.querySelectorAll(".item").forEach(function (item) {
-          item.classList.add("hide");
-        });
-
-        setTimeout(function () {
-          professionalList.innerHTML = "";
-          filteredItems.slice(0, maxItems).forEach(function (item) {
-            var itemElement = createItemElement(item);
-            professionalList.appendChild(itemElement);
-          });
-          void professionalList.offsetWidth;
-          professionalList.querySelectorAll(".item").forEach(function (item) {
-            item.classList.add("show");
-          });
-        }, 500);
-
-        // Remove 'active' class from all filter links and add it to the clicked link
-        filterLinks.forEach(function (link) {
-          link.classList.remove("active");
-        });
-        this.classList.add("active");
-      }
-
-      // Get all the filter links
-      var filterLinks = document.querySelectorAll(".filter-link");
-
-      // Event listener for clicking the filter icon to display initial items
-      var filterIcon = document.querySelector(".category img");
-      filterIcon.addEventListener("click", function () {
-        displayInitialItems();
-      });
-
-      // Display initial items when the page loads
-      displayInitialItems();
-
-      // Add click event listeners to the filter links
-      filterLinks.forEach(function (link) {
-        link.addEventListener("click", handleFiltering);
-      });
-    })
-    .catch((error) => {
-      console.error("Error fetching JSON data:", error);
-    });
-});
-
-// ---------------- End of Professional Education Filtering and Feching ---------------------
-
 // ----------------Start of Footer Ticker ---------------------
 function updateTicker() {
   // This function updates the ticker at the bottom of the page with the current date, time, and location.

@@ -838,33 +838,6 @@ button {
 
 /* ===============================End Of About Us Section=================================================  */
 
-/* ====================== Products Styles================================================================================== */
-.rating {
-  border-bottom: 1px solid #edecec;
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  justify-content: space-around;
-  width: 90%;
-}
-
-.stars {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 90%;
-}
-.stars .star {
-  cursor: pointer;
-}
-
-.rate-message {
-  margin-left: 20px;
-}
-
-/* ======================End of products Styles================================================================================== */
 /* ======================Professional Styles================================================================================== */
 h2.separator {
   padding: 0 80px;
@@ -1092,6 +1065,34 @@ h2.separator span {
 }
 
 /* ===============================End Of Professional Section=================================================  */
+
+/* ====================== Products Styles================================================================================== */
+.rating {
+  border-bottom: 1px solid #edecec;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-around;
+  width: 90%;
+}
+
+.stars {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+}
+.stars .star {
+  cursor: pointer;
+}
+
+.rate-message {
+  margin-left: 20px;
+}
+
+/* ======================End of products Styles================================================================================== */
 
 /* ===============================Start Of Research Section=================================================  */
 #blog {

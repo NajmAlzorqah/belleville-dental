@@ -26,7 +26,7 @@ html {
 
 body {
   background-color: var(--light);
-  padding-top: 90px;
+  /* padding-top: 90px; */
   /* background-color: #fafafa; */
   /* background-image: linear-gradient(180deg, rgba(255, 183, 183, 0.151), rgba(231, 255, 218, 0.16), rgba(197, 254, 255, 0.199), rgba(242, 213, 255, 0.214)); */
 }
@@ -55,7 +55,6 @@ button {
   src: url(/fonts/Heebo-VariableFont_wght.ttf);
 }
 
-<<<<<<< HEAD
 html {
   scroll-behavior: smooth;
 }
@@ -77,8 +76,6 @@ body {
   /* background-color: #fafafa; */
   /* background-image: linear-gradient(180deg, rgba(255, 183, 183, 0.151), rgba(231, 255, 218, 0.16), rgba(197, 254, 255, 0.199), rgba(242, 213, 255, 0.214)); */
 }
-=======
->>>>>>> ecc74ffb4dd564e57b0fbff68c660f32a5f6ce65
 
 /*--------------------------  HOME PAGE --------------------------*/
 
@@ -560,7 +557,7 @@ legend{
 .home-page {
   position: relative;
   height: 100vh;
-  padding-top: 90px;
+  /* padding-top: 90px; */
   height: 100vh;
   width: 100%;
   /* background-image: url(/images/female-orthodontist-with-latex-gloves-handling-dental-equipment.jpg);

@@ -16,21 +16,71 @@ navToggle.addEventListener("click", () => {
 });
 // ----------------END of NAVIGATION TOGGLE ---------------------
 
-// ---------------- Start of Professional Education Filtering and Feching ---------------------
+//-----------------Smooth Scrolling with Offset Adjustment ----------------
+
+// Event listener for when the HTML document is fully loaded and parsed
 document.addEventListener("DOMContentLoaded", function () {
-  // This event listener waits for the HTML document to be fully loaded and parsed before executing the code inside it.
-  // Fetch the JSON data from the server
+  /**
+   * Function to handle smooth scrolling with offset adjustment
+   * @param {Event} event - The click event object
+   */
+  function smoothScroll(event) {
+    // Prevents the default behavior of the clicked link to avoid abrupt jumps
+    event.preventDefault();
+
+    // Extracts the target element's ID from the clicked link's href attribute
+    var targetId = this.getAttribute("href").substring(1);
+
+    // Retrieves the target element using its ID
+    var targetElement = document.getElementById(targetId);
+
+    // Adjust this value based on your fixed navbar height
+    var offset = 70;
+
+    if (targetElement) {
+      // Calculates the desired scroll position, adjusting for the fixed navbar's height
+      var elementPosition = targetElement.getBoundingClientRect().top;
+      var offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      // Scrolls to the calculated position smoothly
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  }
+  
+  // Attach the smoothScroll function to navbar links
+  var navbarLinks = document.querySelectorAll(".navigation-bar a");
+  navbarLinks.forEach(function (link) {
+    link.addEventListener("click", smoothScroll);
+  });
+  
+  // Attach the smoothScroll function to footer links
+  var footerLinks = document.querySelectorAll(".footer-link");
+  footerLinks.forEach(function (link) {
+    link.addEventListener("click", smoothScroll);
+  });
+});
+//----------------- End of Smooth Scrolling with Offset Adjustment ----------------
+
+// ---------------- Start of Professional Education Filtering and Fetching ---------------------
+/**
+ * Fetch and Display Filtered Items from JSON Data
+ *
+ * This JavaScript code fetches data from a JSON file, creates HTML elements based on the data,
+ * and displays them on the webpage. It also provides filtering functionality to show specific
+ * items based on categories.
+ */
+
+// Event listener for when the HTML document is fully loaded and parsed
+document.addEventListener("DOMContentLoaded", function () {
+  // Fetch JSON data from the server
   fetch("data.json")
     .then((response) => response.json()) // Parse the JSON response
     .then((data) => {
-      // After fetching the JSON data successfully, this code runs.
       // Function to create HTML elements for each item
       function createItemElement(item) {
-        // This function takes an item from the JSON data and creates HTML elements to represent it.
-        // It creates a <div> element with class "item" and additional classes based on the item's type.
-        // Inside this <div>, it creates an <img> element for the item's image, a <div> for item info, and a "Read More" link.
-        // Then it appends these elements to the item container and returns it.
-
         var itemDiv = document.createElement("div");
         itemDiv.classList.add("item", item.type);
 
@@ -43,15 +93,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
         var contentDiv = document.createElement("div");
         contentDiv.innerHTML = `
-                    <h3>${item.title}</h3>
-                    <p>${item.content}</p>
-                `;
+          <h3>${item.title}</h3>
+          <p>${item.content}</p>
+        `;
 
         var readDiv = document.createElement("div");
-        readDiv.innerHTML = `<a href="#">Read More</a> <img src="../images/icons/arrow-right.png"></img>`;
+        readDiv.innerHTML = `<a href="#">Read More</a> <svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 viewBox="0 0 227.096 227.096" xml:space="preserve">
+<g>
+	<g>
+		<polygon style="fill:#010002;" points="152.835,39.285 146.933,45.183 211.113,109.373 0,109.373 0,117.723 211.124,117.723 
+			146.933,181.902 152.835,187.811 227.096,113.55 		"/>
+	</g>
+</g>
+</svg>`;
         readDiv.classList.add("read-more");
 
-        // Append elements to the item container
         infoDiv.appendChild(contentDiv);
         itemDiv.appendChild(img);
         itemDiv.appendChild(infoDiv);
@@ -65,100 +122,275 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Function to display items based on filter with animations
       function displayItems(items) {
-        // This function clears the previous items in the container and displays new items with animations.
-        // It creates HTML elements for each item using the createItemElement function and appends them to the container.
-        // It also adds animation classes to show the items with fadeIn effect.
-        // Clear previous items
         professionalList.innerHTML = "";
-
-        // Display items with fadeIn animation
         items.slice(0, 3).forEach(function (item) {
           var itemElement = createItemElement(item);
           professionalList.appendChild(itemElement);
         });
-
-        // Trigger reflow to apply initial opacity transition
         void professionalList.offsetWidth;
-
-        // Add class to trigger fadeIn animation
         professionalList.querySelectorAll(".item").forEach(function (item) {
           item.classList.add("show");
         });
       }
 
-      // Display all items initially
+      // Function to display initial items when the page loads
       function displayInitialItems() {
-        // This function displays the initial set of items when the page loads.
-        // It calls the displayItems function with the first 3 items from the JSON data.
         displayItems(data.items.slice(0, 3));
       }
 
-      // Function to handle filtering with animations
+      // Function to handle filtering of items
       function handleFiltering(event) {
-        // This function handles filtering items based on the selected filter.
-        // It gets the filter value from the clicked filter link and filters the items accordingly.
-        // Then it clears the container, displays the filtered items with animations, and applies fadeIn effect.
         event.preventDefault();
         var filterValue = this.getAttribute("data-filter");
         var filteredItems = data.items.filter(function (item) {
           return filterValue === "all" || item.type === filterValue;
         });
 
-        // Limit the number of items displayed on small screens
         var maxItems = window.innerWidth <= 413 ? 3 : 4;
-
-        // Add hide class to trigger fadeOut animation
         professionalList.querySelectorAll(".item").forEach(function (item) {
           item.classList.add("hide");
         });
 
-        // Wait for fadeOut animation to complete
         setTimeout(function () {
-          // Clear previous items
           professionalList.innerHTML = "";
-
-          // Display filtered items with fadeIn animation
           filteredItems.slice(0, maxItems).forEach(function (item) {
             var itemElement = createItemElement(item);
             professionalList.appendChild(itemElement);
           });
-
-          // Trigger reflow to apply initial opacity transition
           void professionalList.offsetWidth;
-
-          // Add class to trigger fadeIn animation
           professionalList.querySelectorAll(".item").forEach(function (item) {
             item.classList.add("show");
           });
-        }, 500); // Adjust the delay to match the duration of the fadeOut animation
+        }, 500);
+
+        // Remove 'active' class from all filter links and add it to the clicked link
+        filterLinks.forEach(function (link) {
+          link.classList.remove("active");
+        });
+        this.classList.add("active");
       }
 
       // Get all the filter links
       var filterLinks = document.querySelectorAll(".filter-link");
 
-      // Display initial items when the filter icon is clicked
+      // Event listener for clicking the filter icon to display initial items
       var filterIcon = document.querySelector(".category img");
       filterIcon.addEventListener("click", function () {
-        // This event listener triggers the displayInitialItems function when the filter icon is clicked.
         displayInitialItems();
       });
 
-      // Display all items initially
+      // Display initial items when the page loads
       displayInitialItems();
 
       // Add click event listeners to the filter links
       filterLinks.forEach(function (link) {
         link.addEventListener("click", handleFiltering);
-        // This code adds click event listeners to all filter links to handle filtering when clicked.
       });
     })
     .catch((error) => {
       console.error("Error fetching JSON data:", error);
-      // If there's an error fetching JSON data, this code logs the error to the console.
     });
 });
+
 // ---------------- End of Professional Education Filtering and Feching ---------------------
 
+// ---------------- Start of Products Filtering and Fetching ---------------------
+/**
+ * Fetch and Display Filtered Items from JSON Data
+ *
+ * This JavaScript code fetches data from a JSON file, creates HTML elements based on the data,
+ * and displays them on the webpage. It also provides filtering functionality to show specific
+ * items based on categories.
+ */
+document.addEventListener("DOMContentLoaded", function () {
+  // Fetch JSON data from the server
+  fetch("product.json")
+    .then((response) => response.json()) // Parse the JSON response
+    .then((data) => {
+      // Function to create HTML elements for each item
+      function createItemElement(item) {
+        var itemDiv = document.createElement("div");
+        itemDiv.classList.add("item", item.type);
+        itemDiv.dataset.id = item.id;
+
+        var img = document.createElement("img");
+        img.src = item.image;
+        img.alt = item.alt;
+
+        var infoDiv = document.createElement("div");
+        infoDiv.classList.add("info");
+
+        var contentDiv = document.createElement("div");
+        contentDiv.innerHTML = `
+    <h3>${item.title}</h3>
+    <p>${item.content}</p>
+    `;
+
+        var ratingDiv = document.createElement("div");
+        ratingDiv.classList.add("rating");
+        ratingDiv.innerHTML = getStars(item.rating);
+
+        var ratingValue = document.createElement("p");
+        ratingValue.textContent = `${item.rating}`;
+
+        var rateMessageDiv = document.createElement("div");
+        rateMessageDiv.classList.add("rate-message");
+        rateMessageDiv.textContent = "👈 Give this product a rating ";
+
+        var starsDiv = document.createElement("div");
+        starsDiv.classList.add("stars");
+        starsDiv.dataset.productId = item.id; // Set data attribute to store product ID
+        starsDiv.innerHTML = `
+    <span class="star" data-value="1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20px" height="20px"><path d="M12 .587l3.668 7.568L24 9.748l-6 5.85 1.416 8.269L12 18.896l-7.416 3.97L6 15.598l-6-5.85 8.332-1.593L12 .587z" fill="#F6D43E"/></svg></span>
+    <span class="star" data-value="2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20px" height="20px"><path d="M12 .587l3.668 7.568L24 9.748l-6 5.85 1.416 8.269L12 18.896l-7.416 3.97L6 15.598l-6-5.85 8.332-1.593L12 .587z" fill="#F6D43E"/></svg></span>
+    <span class="star" data-value="3"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20px" height="20px"><path d="M12 .587l3.668 7.568L24 9.748l-6 5.85 1.416 8.269L12 18.896l-7.416 3.97L6 15.598l-6-5.85 8.332-1.593L12 .587z" fill="#F6D43E"/></svg></span>
+    <span class="star" data-value="4"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20px" height="20px"><path d="M12 .587l3.668 7.568L24 9.748l-6 5.85 1.416 8.269L12 18.896l-7.416 3.97L6 15.598l-6-5.85 8.332-1.593L12 .587z" fill="#F6D43E"/></svg></span>
+    <span class="star" data-value="5"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20px" height="20px"><path d="M12 .587l3.668 7.568L24 9.748l-6 5.85 1.416 8.269L12 18.896l-7.416 3.97L6 15.598l-6-5.85 8.332-1.593L12 .587z" fill="#F6D43E"/></svg></span>
+    `;
+
+        var readDiv = document.createElement("div");
+        readDiv.innerHTML = `<a href="#">Buy Now</a><svg height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 227.096 227.096" xml:space="preserve"><g><g><polygon style="fill:#010002;" points="152.835,39.285 146.933,45.183 211.113,109.373 0,109.373 0,117.723 211.124,117.723 146.933,181.902 152.835,187.811 227.096,113.55"/></g></g></svg>`;
+        readDiv.classList.add("buy-now");
+
+        starsDiv.appendChild(rateMessageDiv);
+        ratingDiv.appendChild(ratingValue);
+        infoDiv.appendChild(contentDiv);
+        infoDiv.appendChild(ratingDiv);
+        infoDiv.appendChild(starsDiv);
+        itemDiv.appendChild(img);
+        itemDiv.appendChild(infoDiv);
+        itemDiv.appendChild(readDiv);
+
+        // Add event listener to each star
+        starsDiv.querySelectorAll(".star").forEach((star) => {
+          star.addEventListener("click", handleRating);
+        });
+
+        return itemDiv;
+      }
+
+      // Function to generate star icons based on rating
+      function getStars(rating) {
+        const starCount = 5;
+        const filledStars = Math.floor(rating);
+        const remainder = rating - filledStars;
+        let starsHTML = "";
+        for (let i = 0; i < filledStars; i++) {
+          starsHTML +=
+            '<span class="star"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20px" height="20px"><path d="M12 .587l3.668 7.568L24 9.748l-6 5.85 1.416 8.269L12 18.896l-7.416 3.97L6 15.598l-6-5.85 8.332-1.593L12 .587z" fill="#F6D43E"/></svg></span>';
+        }
+
+        if (remainder > 0) {
+          starsHTML +=
+            '<span class="star"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20px" height="20px"><path d="M12 .587l3.668 7.568L24 9.748l-6 5.85 1.416 8.269L12 18.896l-7.416 3.97L6 15.598l-6-5.85 8.332-1.593L12 .587z" fill="#dcdad9"/></svg></span>'; // Add half star if needed
+        }
+
+        return starsHTML;
+      }
+
+      // Function to update product rating
+      function updateProductRating(productId, rating) {
+        // Here you can implement logic to update the rating for the product with the given productId
+        // For example, if you have an array of products, you can find the product by ID and update its rating
+        const product = data.items.find((item) => item.id === productId);
+        if (product) {
+          product.rating = rating;
+        }
+      }
+
+      // Get the container element where items will be appended
+      var productList = document.querySelector(".product-list");
+
+      // Function to display items based on filter with animations
+      function displayItems(items) {
+        productList.innerHTML = "";
+        items.slice(0, 3).forEach(function (item) {
+          var itemElement = createItemElement(item);
+          productList.appendChild(itemElement);
+        });
+        void productList.offsetWidth;
+        productList.querySelectorAll(".item").forEach(function (item) {
+          item.classList.add("show");
+        });
+      }
+
+      // Function to display initial items when the page loads
+      function displayInitialItems() {
+        displayItems(data.items.slice(0, 3));
+      }
+
+      // Function to handle filtering of items
+      function handleFiltering(event) {
+        event.preventDefault();
+        var filterValue = this.getAttribute("data-filter");
+        var filteredItems = data.items.filter(function (item) {
+          return filterValue === "all" || item.type === filterValue;
+        });
+
+        var maxItems = window.innerWidth <= 413 ? 3 : 3;
+        productList.querySelectorAll(".item").forEach(function (item) {
+          item.classList.add("hide");
+        });
+
+        setTimeout(function () {
+          productList.innerHTML = "";
+          filteredItems.slice(0, maxItems).forEach(function (item) {
+            var itemElement = createItemElement(item);
+            productList.appendChild(itemElement);
+          });
+          void productList.offsetWidth;
+          productList.querySelectorAll(".item").forEach(function (item) {
+            item.classList.add("show");
+          });
+        }, 500);
+
+        // Remove 'active' class from all filter links and add it to the clicked link
+        filterLinks.forEach(function (link) {
+          link.classList.remove("active");
+        });
+        this.classList.add("active");
+      }
+
+      // Function to handle rating of items
+      function handleRating(event) {
+        event.preventDefault();
+        const rating = parseInt(this.getAttribute("data-value"));
+        const productId = parseInt(this.closest(".item").dataset.id);
+        updateProductRating(productId, rating);
+        const messageContainer =
+          this.closest(".item").querySelector(".rate-message");
+        messageContainer.textContent = `You rated this product ${rating} stars!`;
+      }
+
+      // Get all the filter links
+      var filterLinks = document.querySelectorAll(".filter-button");
+
+      // Event listener for clicking the filter icon to display initial items
+      var filterIcon = document.querySelector(".category img");
+      filterIcon.addEventListener("click", function () {
+        displayInitialItems();
+      });
+
+      // Display initial items when the page loads
+      displayInitialItems();
+
+      // Add click event listeners to the filter links
+      filterLinks.forEach(function (link) {
+        link.addEventListener("click", handleFiltering);
+      });
+
+      // Add click event listeners to the rating stars
+      var stars = document.querySelectorAll(".star");
+      stars.forEach(function (star) {
+        star.addEventListener("click", handleRating);
+      });
+    })
+    .catch((error) => {
+      console.error("Error fetching JSON data:", error);
+    });
+});
+
+// ---------------- End of Products Filtering and Fetching ---------------------
 // ----------------Start of Footer Ticker ---------------------
 function updateTicker() {
   // This function updates the ticker at the bottom of the page with the current date, time, and location.
@@ -185,16 +417,16 @@ function updateTicker() {
             data.address.village ||
             "Unknown Location";
           // Extract the city from the location data.
-          tickerElement.innerHTML = `Year: ${year} | Time: ${time} | Location: ${city}`;
+          tickerElement.innerHTML = ` ${year} | ${time} | ${city}`;
           // Update the ticker content with the current date, time, and city.
         })
         .catch(() => {
-          tickerElement.innerHTML = `Year: ${year} | Time: ${time} | Location: Unknown`;
+          tickerElement.innerHTML = ` ${year} | ${time} | Location: Unknown`;
           // If an error occurs during fetching location data, display "Unknown" location in the ticker.
         });
     },
     () => {
-      tickerElement.innerHTML = `Year: ${year} | Time: ${time} | Location: Unknown`;
+      tickerElement.innerHTML = ` ${year} | ${time} | Location: Unknown`;
       // If geolocation is not supported or user denies access, display "Unknown" location in the ticker.
     }
   );
@@ -204,3 +436,4 @@ setInterval(updateTicker, 60000); // Update every minute
 updateTicker(); // Initial call
 
 // ----------------End of Footer Ticker ---------------------
+

@@ -1028,7 +1028,7 @@ align-items: center;
 /* ======================Professional Styles================================================================================== */
 h2.separator {
   padding: 0 80px;
-  font-size: 50px;
+  font-size: 3.5rem;
   margin: 40px 0 10px 0;
 }
 
@@ -1279,6 +1279,7 @@ h2.separator span {
 /* ===============================Start Of Research Section=================================================  */
 #blog {
   margin-bottom: 95px;
+  overflow: hidden;
 }
 
 .title {

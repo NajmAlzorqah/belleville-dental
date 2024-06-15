@@ -11,6 +11,7 @@
   --light-blue: #00ccff;
   --dark-green: #2e6d56;
   --light-green: #c1dcd3;
+  --name-of-section: clamp(2rem, 3.5vw, 4rem);
 }
 *,
 *:before,
@@ -1176,6 +1177,7 @@ button {
   flex-direction: column;
   gap: 30px;
 }
+
 .patient-education-intro {
   width: 100%;
   display: flex;
@@ -1225,7 +1227,7 @@ button {
 
 h2.separator {
   padding: 0 80px;
-  font-size: 3.5rem;
+  font-size: var(--name-of-section);
   margin: 40px 0 10px 0;
 }
 

@@ -79,6 +79,7 @@ button {
   opacity: 1;
   filter: blur(0);
 }
+/* ====== MEDIA FOR UNWANTED ANIMATIONS ====== */
 @media (prefers-reduced-motion) {
   .hidden {
     transition: none;
@@ -243,7 +244,11 @@ button {
     display: none !important;
   }
 }
-
+@media (max-height: 520px) and (max-width: 920px) {
+  .scheduals {
+    display: none !important;
+  }
+}
 .scheduals {
   height: 100%;
   width: 100px;

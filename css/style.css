@@ -73,12 +73,21 @@ button {
 .opacity-element {
   opacity: 0;
   filter: blur(5px);
-  transition: all 1.5s;
+  transition: all 0.8s;
 }
 .show-opacity {
   opacity: 1;
   filter: blur(0);
 }
+@media (prefers-reduced-motion) {
+  .hidden {
+    transition: none;
+  }
+  .opacity-element {
+    transition: none;
+  }
+}
+
 .delay:nth-child(2) {
   transition-delay: 200ms;
 }

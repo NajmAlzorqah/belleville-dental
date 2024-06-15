@@ -11,10 +11,58 @@
 </head>
 
 <body>
+    <!-- ------------ PAGE LOADER --------------- -->
+    <div class="loader" id="loader">
+    <svg
+      class="loader-container"
+      x="0px"
+      y="0px"
+      viewBox="0 0 50 31.25"
+      height="31.25"
+      width="50"
+      preserveAspectRatio='xMidYMid meet'
+    >
+      <path
+        class="track"
+        stroke-width="4"
+        fill="none"
+        pathlength="100"
+        d="M0.625 21.5 h10.25 l3.75 -5.875 l7.375 15 l9.75 -30 l7.375 20.875 v0 h10.25"
+      />
+      <path
+        class="car"
+        stroke-width="4"
+        fill="none"
+        pathlength="100"
+        d="M0.625 21.5 h10.25 l3.75 -5.875 l7.375 15 l9.75 -30 l7.375 20.875 v0 h10.25"
+      />
+    </svg>
+  </div>
+    <!-- ------------ END of PAGE LOADER --------------- -->
+
+    <!-- ---------------- HOME PAGE ------------------- -->
     <section id="home-page" class="home-page">
-        <!-- Mohammed's part -->
+        <div class="scheduals">  <!-- ------ scheduals -------->
+            <div class="grid-box">
+                <div class="days delay hidden">
+                    <h5><span>01.</span> Saterday</h5>
+                    <p>Appointment Only</p>
+                </div>
+                <div class="days delay hidden">
+                    <h5><span>02.</span> Monday</h5>
+                    <p>11:00am 6:00pm</p>
+                </div>
+                <div class="days delay hidden">
+                    <h5><span>03.</span> Tuesday</h5>
+                    <p>9:00am 4:00pm</p>
+                </div>
+                <div class="days delay hidden">
+                    <h5><span>04.</span> Thursday</h5>
+                    <p>11:00am 6:00pm</p>
+                </div>
+            </div>
+            </div>
         <div class="page-saperatopr"></div>
-        <!-- <img class="page-saperatopr" src="./images/page-saperator.svg" alt="SVG"> -->
         <div class="background-image">
             <img src="./images/female-orthodontist-with-latex-gloves-handling-dental-equipment2.jpg" alt="background-image">
         </div>
@@ -30,28 +78,32 @@
                         d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20" />
                 </svg>
             </div>
-            <div class="links">
-                <ul id="primary-navigation" data-visible="false" class="primary-navigation">
+            <div class="links"> <!-- -------- NAVIGIIONAL LINKS ----------->
+                <ul id="primary-navigation" data-visible="false" class="primary-navigation menu">
                     <li>
                         <a href="#home-page">Home</a>
                     </li>
                     <li>
-                        <a href="#about-us">About us</a>
+                        <a href="#about-us">About&nbsp;us</a>
                     </li>
                     <li>
                         <div class="education">
-                            <p>Education</p>
+                            <a href="#patient-education" >Education</a>
+                            
                             <div class="drop-down-menu">
+                                <a href="#patient-education">. Patient education</a>
                                 <a href="#professional">. Professional education</a>
-                                <a href="">. Patient education</a>
                             </div>
                         </div>
                     </li>
                     <li>
-                        <a href="">Products</a>
+                        <a href="#products">Products</a>
                     </li>
                     <li>
-                        <a href="">Research</a>
+                        <a href="#blog">Research</a>
+                    </li>
+                    <li>
+                        <a href="#gallary">Gallary</a>
                     </li>
                     <li>
                         <a href="#contact">Contact</a>
@@ -59,99 +111,139 @@
                 </ul>
             </div>
             <div class="left-container">
-                <div class="logo">
+                <div class="logo">  <!-- ------ LOGO ----- -->
                     <a href="./index.html">
                         <img src="./images/light-logo-icon.png" alt="logo">
                         <p><span>Belleville</span>Dental</p>
                     </a>
                 </div>
-                <div class="visitors-count">
+                <div class="visitors-count"> <!-- ------- VISITOR COUNT -------  -->
                     <img src="./images/eye-icon-white.svg" alt="icon">
-                    <p>9999</p>
+                    <p id="visitor-count" >1</p>
                 </div>
             </div>
         </nav>
         <div class="home-page-componants">
-            <div class="main-text">
-                <h2>Excellent Techniques For Healthy Dental Condition</h2>
+            <div class="main-text delay hidden">
+                <h1>Excellent Techniques <span>For Healthy Dental Condition</span></h1>
             </div>
-            <div class="secondary-text">
+            <div class="secondary-text delay hidden">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dolor minima quos provident facere
                     possimus dicta nesciunt mollitia soluta quibusdam laboriosam commodi id, reiciendis nemo illo
                     officiis voluptatem aliquam dolorum.</p>
             </div>
             <div class="buttons">
-                <button>Make an Appointment</button>
-                <div class="modle" id="modle">
-                    
+                <button class="delay hidden" data-model-target="#model">Make an Appointment &rarr;</button>
+            </div>
+        </div>
+        <div class="model" id="model">
+                    <div class="model-header">
+                    <h2>Request Appointment</h2>
+                    <button data-close-button class="close-button">&times;</button>
+                    </div>
+                    <div class="model-body">
+                    <h3>Have Visited Us Before?</h3>
+                    <div class="ratio-option">
+                        <div><input class="yes" type="radio" />Yes</div>
+                        <div><input class="no" type="radio" />No</div>
+                    </div>
+                    <h3>Name&#42;</h3>
+                    <div class="form-name">
+                        <div class="first-name">
+                        <input type="text" />
+                        </div>
+                        <div class="last-name">
+                        <input type="text" />
+                        </div>
+                    </div>
+                    <h3>Email Address&#42;</h3>
+                    <input type="email" />
+                    <h3>Phone Number&#42;</h3>
+                    <input type="text" />
+                    <h3>Prefeered Appointment Day</h3>
+                    <input type="datetime" placeholder="No Preference" />
+                    <h3>Prefeered Appointment Time</h3>
+                    <input type="datetime" placeholder="No Preference" />
+                    <div class="sumbet-button">
+                        <button>Sumbet</button>
+                    </div>
+                    </div>
                 </div>
-                
-
-
-
-                <!-- <button style="width: 120px;" class="cont-button">Contact Us</button> -->
-            </div>
-            <div class="shades"></div>
-        </div>
-
+                <div id="overlay"></div>
     </section>
-    <!--============================================================================================================================-->
-    <section id="about-us">
-        <!-- Abulmalik's part-->
-        <div class="about-us-container">
-            <!-- picture -->
-            <div class="about-us-picture-container">
-                <img src="./images/kh3wrf2.png" alt="">
-            </div>
-
-            <!-- content -->
-            <div class="about-us-content-container">
-                <h2>ABOUT <span>US</span></h2>
-                <p>We're here to make you look good.</p>
-                <p>Our mission is to make every one feel <i>empowered</i> and <i>self-confident</i> every single day.
-                </p>
-                <p>Welcome to our website! We are dedicated to providing top-quality products and services to our valued
-                    customers. Our
-                    team of experienced professionals works tirelessly to ensure customer satisfaction and to
-                    continuously improve our
-                    offerings. Established in 2024, our company has grown significantly, thanks to our commitment to
-                    excellence and our
-                    loyal customer base. We believe in transparency, integrity, and innovation, and we strive to reflect
-                    these values in
-                    everything we do. Thank you for visiting, and we look forward to serving you!
-                </p>
-                <button>Read More</button>
-            </div>
+    
+    <!--===================================== ABOUT US SECTION + COMPANIES LIST =============================================================-->
+    <section id="about-us" class="about-us">
+      <div class="pics delay hidden">
+        <div class="pic-one">
+          <img src="./images/2 (160).jpg" alt="" />
         </div>
+        <div class="pic-two">
+          <img src="./images/2 (66).jpg" alt="" />
+        </div>
+      </div>
+      <div class="text-elements hidden">
+        <div class="about-us-header">
+          <p class="about-text">About</p>
+          <p class="us">Us <img src="/images/4.jpg" alt="" /></p>
+        </div>
+        <div class="about-us-content-container">
+          <p>We're here to make you look good.</p>
+          <p>
+            Our mission is to make every one feel <i>empowered</i> and
+            <i>self-confident</i> every single day.
+          </p>
+          <p>
+            Welcome to our website! We are dedicated to providing top-quality
+            products and services to our valued customers. Our team of
+            experienced professionals works tirelessly to ensure customer
+            satisfaction and to continuously improve our offerings. Established
+            in 2024, our company has grown significantly, thanks to our
+            commitment to excellence and our loyal customer base. We believe in
+            transparency, integrity, and innovation, and we strive to reflect
+            these values in everything we do. Thank you for visiting, and we
+            look forward to serving you!
+          </p>
+          <button class="btn btn-hover">Read More ...</button>
+        </div>
+      </div>
     </section>
-
-    <!--============================================================================================================================-->
+    <section class="companies">
+      <div data-animated="true" class="scroller">
+        <ul class="tag-list scroller__inner">
+          <li><img src="./images/company-1.png" alt="logo" /></li>
+          <li><img src="./images/company-7.png" alt="logo" /></li>
+          <li><img src="./images/company-2.png" alt="logo" /></li>
+          <li><img src="./images/company-8.png" alt="logo" /></li>
+          <li><img src="./images/company-4.png" alt="logo" /></li>
+          <li><img src="./images/company-5.png" alt="logo" /></li>
+          <li><img src="./images/company-6.png" alt="logo" /></li>
+          <li><img src="./images/company-3.png" alt="logo" /></li>
+        </ul>
+      </div>
+    </section>
+    <!--================================ PATIENT EDUCATION SECTION ==========================================================-->
     <section id="patient-education">
-        <!-- ---------PATIENT EDUCATION ------------ -->
         <div class="patient-education-intro">
-            <div class="intro-text">
-                <h1>Dental Health: The Foundation of Overall Well-being</h1>
+            <div class="intro-text opacity-element">
+                <h1 >Dental Health: The Foundation of Overall Well-being</h1>
                 <p>Maintaining good dental health is essential for your overall physical and emotional well-being. Regular check-ups and proper oral hygiene can help prevent a range of issues and enable you to smile with confidence.</p>
-            </div>
-            <div class="intro-img">
-                <div class="shade2"></div>
-                <img src="./images/pexels-karolina-grabowska-6627315.jpg" alt="">
             </div>
         </div>
         <div class="secondary-intro">
-            <h1>The Importance of Regular Dental Check-ups</h1>
+            <h1 class="hidden" >The Importance of Regular Dental Check-ups</h1>
             <div class="sub-intro">
-                <div class="intro-container">
+                <div class="intro-container delay hidden">
                     <h3>Early Detection</h3>
                     <p>Regular dental visits allow your dentist to catch any problems early, when they are easier and less expensive to treat.</p>
                 </div>
 
-                <div class="intro-container">
+                <div class="intro-container delay hidden">
                     <h3>Preventive Care</h3>
                     <p>Routine cleanings and examinations help prevent the development of cavities, gum disease, and other oral health issues.</p>
                 </div>
 
-                <div class="intro-container">
+                <div class="intro-container delay hidden">
                     <h3>Personalized Guidance</h3>
                     <p>RYour dentist can provide tailored advice on the best oral hygiene techniques and products for your unique needs.</p>
                 </div>
@@ -159,27 +251,27 @@
             
         </div>
         <div class="third-intro">
-            <h1>Proper Oral Hygiene Techniques</h1>
+            <h1 class="hidden" >Proper Oral Hygiene Techniques</h1>
             <div class="sub-intro">
-                <div class="intro-container">
+                <div class="intro-container delay hidden">
                     <img src="./images/tooth-brush.svg" alt="">
                     <h3>Brushing</h3>
                     <p>Brush your teeth twice a day for 2 minutes each time using a softbristled toothbrush and fluoride toothpaste.</p>
                 </div>
 
-                <div class="intro-container">
+                <div class="intro-container delay hidden">
                     <img src="./images/teeth.svg" alt="">
                     <h3>Flossing</h3>
                     <p>Floss once a day to remove plaque and food particles from between teeth.</p>
                 </div>
 
-                <div class="intro-container">
+                <div class="intro-container delay hidden">
                     <img src="./images/star.svg" alt="">
                     <h3>Rinsing</h3>
                     <p>Use an antimicrobial mouthwash to help kill bacteria and prevent gum disease.</p>
                 </div>
 
-                <div class="intro-container">
+                <div class="intro-container delay hidden">
                     <img src="./images/face-icon.svg" alt="">
                     <h3>Tongue Cleaning</h3>
                     <p>Gently clean your tongue to remove bacteria and freshen your breath.</p>
@@ -188,7 +280,7 @@
         </div>
         
     </section>
-    <!--============================================================================================================================-->
+    <!--================================= PROFESSIONAL EDUCATION SECTION ==========================================================-->
     <section id="professional">
         <div class="professional">
             <h2 class="separator">
@@ -208,8 +300,7 @@
             </div>
         </div>
     </section>
-
-    <!-- =====================Products Section======================================  -->
+    <!-- =============================== Products Section ==========================================  -->
     <section id="products">
         <div class="products">
             <h2 class="separator"><span>Products</span></h2>
@@ -225,15 +316,119 @@
             </div>
         </div>
     </section>
-    <!-- =====================End of Products Section======================================  -->
+    <!-- =================================== GALLARY ========================================================== -->
+    <section class="gallary" id="gallary">
+      <div class="photo-grid">
+        <div class="card card-tall-three card-wide-three hidden">
+          <div class="sub-card bordered-grid">
+            <p class="big-font">GALLARY</p>
+          </div>
+        </div>
 
-    <!-- Abdulmalek -->
-    <!-- dont do anything inside these two sections yet -->
+        <div class="card card-wide-two">
+          <div class="sub-card">
+            <img src="/images/2 (3).jpg" alt="" />
+          </div>
+        </div>
 
-    <!-- ===================== Reseach section =========================== -->
+        <div class="card card-wide-three card-tall-two delay hidden">
+          <div class="sub-card bordered-grid">
+            <p class="small-font">
+              Discover the remarkable smile transformation our ptients have
+              experienced through our comperhensive dental services.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="sub-card">
+            <img src="/images/2 (21).jpg" alt="" />
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="sub-card">
+            <img src="/images/2 (61).jpg" alt="" />
+          </div>
+        </div>
+
+        <div class="card card-tall-two card-wide-two">
+          <div class="sub-card">
+            <img src="/images/2 (13).jpg" alt="" />
+          </div>
+        </div>
+        <div class="card card-wide-two card-tall-two delay hidden">
+          <div class="sub-card bordered-grid">
+            <p class="small-font">
+              Our modren well-equipped dental office is desgined with your
+              comfort and convenience in mind.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="sub-card">
+            <img src="/images/2 (27).jpg" alt="" />
+          </div>
+        </div>
+
+        <div class="card card-wide-two">
+          <div class="sub-card">
+            <img src="/images/2 (55).jpg" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="photo-grid">
+        <div class="card media-selected card-tall-two">
+          <div class="sub-card">
+            <img src="/images/2 (26).jpg" alt="" />
+          </div>
+        </div>
+
+        <div class="card card-tall-two card-wide-three delay hidden">
+          <div class="sub-card bordered-grid">
+            <p class="small-font">
+              Experience the difference that dedicated, compassionate, and
+              innovative dental care can make in your life at
+              <span>Belleville</span>Dental
+            </p>
+          </div>
+        </div>
+
+        <div class="card card-wide-two">
+          <div class="sub-card">
+            <img src="/images/2 (160).jpg" alt="" />
+          </div>
+        </div>
+
+        <div class="card card-wide-two">
+          <div class="sub-card">
+            <img src="/images/2 (67).jpg" alt="" />
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="sub-card">
+            <img src="/images/2 (15).jpg" alt="" />
+          </div>
+        </div>
+
+        <div class="card card-wide-two">
+          <div class="sub-card">
+            <img src="/images/2 (65).jpg" alt="" />
+          </div>
+        </div>
+        <div class="card card-wide-three delay hidden">
+          <div class="sub-card bordered-grid">
+            <p class="big-font">SMILE</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ================================= Reseach section =================================================== -->
     <section class="section" id="blog">
         <div class="container">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center opacity-element">
                 <div class="col-lg-6">
                     <div class="text-center mb-5">
                         <h3 class="title mb-3">Latest <span>News</span></h3>
@@ -243,11 +438,11 @@
                 </div>
             </div>
 
-            <div class="position-relative">
+            <div class="position-relative delay hidden">
                 <button id="scroll-left" class="scroll-btn left-btn">&#9664;</button>
                 <div class="row flex-nowrap overflow-auto blog-container">
                     <!-- Original Blog Entries -->
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 delay hidden">
                         <div class="blog-box mb-4 mb-lg-0">
                             <img src="./images/img-1.jpg" alt="" class="img-fluid d-block mx-auto rounded">
                             <ul class="list-inline text-muted text-uppercase font-size-15 font-weight-medium mt-3 mb-2">
@@ -265,7 +460,7 @@
                                     class="ms-2 right-icon">&#8594;</span></a>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 delay hidden">
                         <div class="blog-box mb-4 mb-lg-0">
                             <img src="./images/img-2.jpg" alt="" class="img-fluid d-block mx-auto rounded">
                             <ul class="list-inline text-muted text-uppercase font-size-15 font-weight-medium mt-3 mb-2">
@@ -283,7 +478,7 @@
                                     class="ms-2 right-icon">&#8594;</span></a>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 delay hidden">
                         <div class="blog-box mb-4 mb-lg-0">
                             <img src="./images/img-3.jpg" alt="" class="img-fluid d-block mx-auto rounded">
                             <ul class="list-inline text-muted text-uppercase font-size-15 font-weight-medium mt-3 mb-2">
@@ -302,7 +497,7 @@
                         </div>
                     </div>
                     <!-- Duplicated Blog Entries -->
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 delay hidden">
                         <div class="blog-box mb-4 mb-lg-0">
                             <img src="./images/img-1.jpg" alt="" class="img-fluid d-block mx-auto rounded">
                             <ul class="list-inline text-muted text-uppercase font-size-15 font-weight-medium mt-3 mb-2">
@@ -320,7 +515,7 @@
                                     class="ms-2 right-icon">&#8594;</span></a>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 delay hidden">
                         <div class="blog-box mb-4 mb-lg-0">
                             <img src="./images/img-2.jpg" alt="" class="img-fluid d-block mx-auto rounded">
                             <ul class="list-inline text-muted text-uppercase font-size-15 font-weight-medium mt-3 mb-2">
@@ -338,7 +533,7 @@
                                     class="ms-2 right-icon">&#8594;</span></a>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 delay hidden">
                         <div class="blog-box mb-4 mb-lg-0">
                             <img src="./images/img-3.jpg" alt="" class="img-fluid d-block mx-auto rounded">
                             <ul class="list-inline text-muted text-uppercase font-size-15 font-weight-medium mt-3 mb-2">
@@ -361,12 +556,8 @@
             </div>
         </div>
     </section>
-    <!-- the end of Reseach section -->
-
-
-    <!-- ===================== contact us section =========================== -->
-    <!-- Contact Us Start -->
-    <section class="section bg-light" id="contact">
+    <!-- ================================ contact us section ================================================= -->
+    <section class="section bg-light opacity-element" id="contact">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6">
@@ -438,11 +629,7 @@
             </div>
         </div>
     </section>
-    <!-- the end of contact us section -->
-
-
-    <!-- ================Footer Section ============================== -->
-    <!-- ================Najm's Section ============================== -->
+    <!-- ================================= Footer Section ======================================= -->
     <section class="footer" style="background-image: url(images/footer-bg.png)">
         <div class="container">
             <div class="row">
@@ -494,6 +681,7 @@
             </div>
         </div>
     </div>
+
 
     <script src="./js/app.js"></script>
     <script src="./js/jquery-3.7.1.min.js"></script>

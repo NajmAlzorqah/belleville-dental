@@ -1,8 +1,64 @@
+// ---------------- PAGE LOADER ---------------------
+window.addEventListener("load", function () {
+  var loader = document.getElementById("loader");
+  loader.classList.add("hide");
+});
+
+// ---------------- SCROLL ANIMATION ---------------------
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    console.log(entry);
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    } else {
+      entry.target.classList.remove("show");
+    }
+  });
+});
+
+const hiddenElements = document.querySelectorAll(".hidden");
+hiddenElements.forEach((el) => observer.observe(el));
+// ----------------------------------
+const observerTwo = new IntersectionObserver((entriesTwo) => {
+  entriesTwo.forEach((entryOne) => {
+    console.log(entryOne);
+    if (entryOne.isIntersecting) {
+      entryOne.target.classList.add("show-opacity");
+    } else {
+      entryOne.target.classList.remove("show-opacity");
+    }
+  });
+});
+
+const opacityElements = document.querySelectorAll(".opacity-element");
+opacityElements.forEach((elo) => observerTwo.observe(elo));
+
+// ------------------- COMPAINES INFINITE SCROLL ANIMATION --------------------
+const scrollers = document.querySelectorAll(".scroller");
+if (!window.matchMedia("(prefers-reduced-motion: reduse)").matches) {
+  addAnimation();
+}
+function addAnimation() {
+  scrollers.forEach((scroller) => {
+    scroller.setAttribute("data-animated", true);
+
+    const scrollerInner = scroller.querySelector(".scroller__inner");
+    const scrollerContent = Array.from(scrollerInner.children);
+
+    scrollerContent.forEach((item) => {
+      const duplicatedItem = item.cloneNode(true);
+      duplicatedItem.setAttribute("aria-hidden", true);
+      scrollerInner.appendChild(duplicatedItem);
+    });
+  });
+}
+
 // ---------------- NAVIGATION TOGGLE ---------------------
 // This section toggles the visibility of the navigation menu on mobile devices.
 
 const primaryNav = document.querySelector(".primary-navigation");
 const navToggle = document.querySelector(".mobile-nav-toggle");
+const navLinks = document.querySelectorAll(".primary-navigation");
 
 navToggle.addEventListener("click", () => {
   // This event listener toggles the visibility attribute of the primary navigation element when the toggle button is clicked.
@@ -14,7 +70,79 @@ navToggle.addEventListener("click", () => {
     primaryNav.setAttribute("data-visible", false);
   }
 });
-// ----------------END of NAVIGATION TOGGLE ---------------------
+navLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    primaryNav.setAttribute("data-visible", false);
+  });
+});
+
+// --------------------------------------------------------------------------------
+// JavaScript to handle hamburger menu toggle
+function toggleMenu() {
+  var ham = document.querySelector(".ham");
+  ham.classList.toggle("active");
+}
+
+// Reset hamburger menu when clicking on any link inside .primary-navigation
+var links = document.querySelectorAll(".primary-navigation a");
+links.forEach(function (link) {
+  link.addEventListener("click", function () {
+    var ham = document.querySelector(".ham");
+    ham.classList.remove("active");
+  });
+});
+
+// Reset hamburger menu when clicking anywhere inside .primary-navigation
+var primaryNavigation = document.querySelector(".primary-navigation");
+primaryNavigation.addEventListener("click", function () {
+  var ham = document.querySelector(".ham");
+  ham.classList.remove("active");
+});
+
+// ---------------- VISTOR COUNT ---------------------
+const visitorCountElement = document.getElementById("visitor-count");
+let visitorCount = localStorage.getItem("visitor-count") || 0;
+visitorCount++;
+localStorage.setItem("visitor-count", visitorCount);
+visitorCountElement.textContent = visitorCount;
+
+// ---------------- APPOINTMENT MODEL ---------------------
+const openModelButton = document.querySelectorAll("[data-model-target]");
+const closeModelButton = document.querySelectorAll("[data-close-button]");
+const overlay = document.getElementById("overlay");
+
+openModelButton.forEach((button) => {
+  button.addEventListener("click", () => {
+    const model = document.querySelector(button.dataset.modelTarget);
+    openModel(model);
+  });
+});
+
+overlay.addEventListener("click", () => {
+  const models = document.querySelectorAll(".model.active");
+  models.forEach((model) => {
+    closeModel(model);
+  });
+});
+
+closeModelButton.forEach((button) => {
+  button.addEventListener("click", () => {
+    const model = button.closest(".model");
+    closeModel(model);
+  });
+});
+
+function openModel(model) {
+  if (model == null) return;
+  model.classList.add("active");
+  overlay.classList.add("active");
+}
+
+function closeModel(model) {
+  if (model == null) return;
+  model.classList.remove("active");
+  overlay.classList.remove("active");
+}
 
 //-----------------Smooth Scrolling with Offset Adjustment ----------------
 
@@ -49,13 +177,13 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   }
-  
+
   // Attach the smoothScroll function to navbar links
   var navbarLinks = document.querySelectorAll(".navigation-bar a");
   navbarLinks.forEach(function (link) {
     link.addEventListener("click", smoothScroll);
   });
-  
+
   // Attach the smoothScroll function to footer links
   var footerLinks = document.querySelectorAll(".footer-link");
   footerLinks.forEach(function (link) {
@@ -436,4 +564,3 @@ setInterval(updateTicker, 60000); // Update every minute
 updateTicker(); // Initial call
 
 // ----------------End of Footer Ticker ---------------------
-

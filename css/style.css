@@ -1752,7 +1752,7 @@ h2.separator span {
   transform: translateY(-3px);
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.423);
   background-color: #0a1536 !important;
-  font-size: 1.03rem;
+  /* font-size: 1.03rem; */
 }
 
 .form-control:focus {

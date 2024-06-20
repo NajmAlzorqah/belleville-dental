@@ -584,7 +584,7 @@ button {
 .shades {
   height: 100%;
   width: 100%;
-  background-image: linear-gradient(to right, rgb(255, 255, 255), transparent);
+  background-image: linear-gradient(to right, white, transparent, transparent);
   position: absolute;
   z-index: -1;
   top: 0px;
@@ -636,7 +636,7 @@ button {
   width: 90%;
   line-height: 27px;
   font-size: 1.25rem;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 /* BUTTON STYLE */
@@ -943,6 +943,9 @@ button {
   .main-text > h1::after {
     content: "";
     display: none;
+  }
+  .shades {
+    background-image: linear-gradient(to top, white, transparent, transparent);
   }
 }
 /* -------- ROTATED SMALL SCREENS (HEIGHT MEDIA) --------- */

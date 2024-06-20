@@ -1,3 +1,4 @@
+/* ================================ GLOBAL SELECTORS ================================= */
 :root {
   --black: #303030;
   --white: #f1f1f1;
@@ -58,7 +59,7 @@ button {
   src: url(/fonts/Heebo-VariableFont_wght.ttf);
 }
 
-/* ----------------------- SCROLL ANIMATION -------------------- */
+/* ----- SCROLL ANIMATION ----- */
 .hidden {
   opacity: 0;
   filter: blur(5px);
@@ -79,7 +80,7 @@ button {
   opacity: 1;
   filter: blur(0);
 }
-/* ====== MEDIA FOR UNWANTED ANIMATIONS ====== */
+/* ----- MEDIA FOR UNWANTED ANIMATIONS ----- */
 @media (prefers-reduced-motion) {
   .hidden {
     transition: none;
@@ -101,8 +102,9 @@ button {
 .delay:nth-child(5) {
   transition-delay: 800ms;
 }
-/* ----------------------- END of SCROLL ANIMATION -------------------- */
-/* --------------------------- PAGE LOADER -------------------- */
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* ================================ PAGE LOADER ================================ */
 .loader {
   position: fixed;
   top: 0;
@@ -178,9 +180,26 @@ button {
     opacity: 0;
   }
 }
-/* ----------------------- END of PAGE LOADER  -------------------- */
-/* ----------------- HAMBURGER MENU / NAVIGATION TOGGLE  -------------------- */
 
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* ================================ NAVIGATION BAR ================================ */
+/* ------------- OVERALL NAVIGATION BAR ------------- */
+.navigation-bar {
+  position: fixed;
+  z-index: 9999;
+  position: fixed !important;
+  top: 0px;
+  width: 100%;
+  display: flex;
+  padding-inline: 10%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  height: 70px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.104);
+}
+
+/* ------------- HUMBERGER ICON ANIMATION ------------- */
 .ham {
   display: none;
   position: absolute;
@@ -235,265 +254,8 @@ button {
 .ham8.active .bottom {
   stroke-dashoffset: -64px;
 }
-/* -------------------- END of NAVIGATION TOGGLE ------------------------ */
-
-/* -------------------- MEDIA QUERIES ( COMPUTER FIRST ) ------------------------ */
-/* ======= BIG SCREENS ========= */
-@media (max-height: 750px) and (max-width: 600px) {
-  .scheduals {
-    display: none !important;
-  }
-}
-@media (max-height: 520px) and (max-width: 920px) {
-  .scheduals {
-    display: none !important;
-  }
-}
-.scheduals {
-  height: 100%;
-  width: 100px;
-  border-radius: 0px 0px 0px 0px;
-  padding: 15px;
-  position: absolute;
-  bottom: 0px;
-  right: 0;
-  align-content: center;
-  color: black;
-  text-align: end;
-  background-color: rgba(255, 255, 255, 0.449);
-  box-shadow: 5px 0px 30px 10px rgba(0, 0, 0, 0.166);
-  backdrop-filter: blur(20px);
-}
-.days h5 span {
-  font-size: 1.2rem;
-  font-weight: 200;
-}
-.days h5 {
-  font-weight: 1000;
-  font-size: 1rem;
-}
-.days p {
-  color: rgb(0, 0, 0);
-  font-size: 0.8rem;
-}
-.grid-box {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-@media (max-width: 1350px) {
-  .navigation-bar > .links > ul > li > a,
-  .education {
-    font-size: 0.9rem !important;
-  }
-}
-@media (max-width: 1250px) {
-  .navigation-bar {
-    padding-inline: 6% !important;
-    gap: 10%;
-  }
-
-  .drop-down-menu {
-    display: none;
-  }
-
-  .left-container {
-    transform: scale(0.8);
-    transition: all 0.5s ease;
-    margin-right: 20px;
-  }
-}
-
-/* ======= MEDIUM SCREENS ========= */
-@media (max-width: 980px) {
-  .scheduals {
-    width: 100%;
-    height: 120px;
-  }
-  .grid-box {
-    flex-direction: row !important;
-    gap: 10% !important;
-    align-items: center;
-    justify-content: center;
-  }
-  .ham {
-    display: block;
-    position: fixed;
-    z-index: 999999;
-  }
-
-  .visitors-count {
-    display: none !important;
-  }
-
-  .navigation-bar > .links {
-    inset: 0 40% 0 0;
-    width: unset !important;
-  }
-
-  .navigation-bar > .links > ul {
-    position: fixed;
-    align-items: flex-start !important;
-    z-index: 99999;
-    top: 100px;
-    justify-content: flex-start !important;
-    height: 200vh;
-    width: 100% !important;
-    padding-left: 30px !important;
-    flex-direction: column;
-    text-align: unset !important;
-    padding: min(20vh) 2rem;
-    gap: 1.75rem !important;
-    background: hsla(0, 0%, 23%, 0.077) !important;
-    backdrop-filter: blur(1rem);
-    transform: translateX(-100%);
-  }
-
-  .logo {
-    margin-right: 60px;
-  }
-
-  .about-us {
-    display: flex;
-    flex-direction: column;
-  }
-  .pics {
-    width: unset !important;
-    height: unset !important;
-    margin-top: 50px !important;
-  }
-  .text-elements {
-    width: unset !important;
-    height: 100% !important;
-    padding-top: 0px !important ;
-  }
-  .education > a {
-    font-size: 1.25rem;
-  }
-  .primary-navigation[data-visible="true"] {
-    transform: translateX(0%) !important;
-  }
-
-  .navigation-bar > .links > ul > li > a {
-    font-size: 1.25rem !important;
-  }
-
-  .navigation-bar {
-    padding: 0px !important;
-  }
-
-  .education:hover .drop-down-menu {
-    backdrop-filter: unset !important;
-    opacity: 1 !important;
-    pointer-events: visible;
-    left: 84px !important;
-  }
-
-  .drop-down-menu {
-    background-image: linear-gradient(
-      to right,
-      transparent,
-      rgba(255, 255, 255, 0.475)
-    ) !important;
-    font-size: 1rem;
-    padding-left: 30px !important;
-    padding-top: 0px !important;
-    transition: all 0.5s;
-    top: -5px !important;
-    opacity: 0 !important;
-    left: 40px !important;
-    width: 240px !important;
-    height: 100px !important;
-    border-radius: 0px 5px 5px 0px !important;
-  }
-  .home-page-componants > div {
-    width: 80% !important;
-  }
-}
-/* ======== SMALL SCREENS ========= */
-@media (max-width: 600px) {
-  .logo > a > p {
-    display: none !important;
-    justify-content: center !important;
-  }
-  .logo > a {
-    position: absolute !important;
-    right: 3% !important;
-  }
-
-  .left-container {
-    align-items: center !important;
-    justify-content: flex-end !important;
-  }
-
-  .home-page-componants {
-    width: 100% !important;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 0px;
-    padding-left: 0px !important;
-  }
-  .buttons {
-    display: flex;
-    justify-content: center;
-  }
-
-  .secondary-text > p {
-    width: 100% !important;
-  }
-  .main-text > h1::before {
-    display: none;
-  }
-  .main-text > h1::after {
-    content: "";
-    display: none;
-  }
-  .media-selected {
-    grid-column: span 3 / auto !important;
-  }
-}
-
-/* ======= ROTATED SMALL SCREENS ========= */
-@media (max-height: 420px) {
-  .home-page-componants {
-    flex-direction: row !important;
-    padding-left: 0px !important;
-    align-items: center;
-    justify-content: center;
-    justify-items: center;
-    margin-top: 20px !important;
-    padding-right: 40px !important;
-  }
-  .home-page-componants {
-    transform: scale(0.9);
-  }
-  .navigation-bar {
-    padding-right: 40px !important;
-  }
-  .buttons {
-    position: unset !important;
-  }
-}
-
-/* --------------------  NAVIGATION BAR ------------------------ */
-.navigation-bar {
-  position: fixed;
-  z-index: 9999;
-  position: fixed !important;
-  top: 0px;
-  width: 100%;
-  display: flex;
-  padding-inline: 10%;
-  justify-content: space-between;
-  align-items: center;
-  background-color: white;
-  height: 70px;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.104);
-}
-
+/* ------------- HUMBERGER ICON POSITIONING ------------- */
 .burger-menu {
-  background-color: red;
   width: 0%;
   height: 100%;
   position: absolute;
@@ -502,9 +264,14 @@ button {
   justify-content: center;
 }
 
+/* ------------- NAVIGATION LINKS ------------- */
 .navigation-bar > .links {
   width: 60%;
   align-items: center;
+}
+.navigation-bar > .links a:focus {
+  color: black;
+  font-weight: bold !important;
 }
 
 .navigation-bar > .links > ul {
@@ -520,6 +287,23 @@ button {
   font-size: 1.1rem;
   transition: all 0.5s ease;
   margin-bottom: 0px;
+}
+
+.navigation-bar > .links > ul > li > a {
+  transition: all 0.5s ease;
+  font-weight: 500;
+  filter: drop-shadow(0px 0px 1px transparent);
+}
+
+.navigation-bar > .links > ul > li > a:hover {
+  filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.479));
+  color: #001869;
+  padding: 0px;
+  margin: 0px;
+}
+
+.navigation-bar > .links > ul > li {
+  transition: all 0.5s ease;
 }
 
 .education {
@@ -555,7 +339,7 @@ button {
   pointer-events: visible;
 }
 
-.drop-down-menu {
+.education > .drop-down-menu {
   transition: all 0.5s;
   position: absolute;
   top: 20px;
@@ -572,7 +356,7 @@ button {
   padding: 20px 0px 10px 0px;
 }
 
-.drop-down-menu > a {
+.education > .drop-down-menu > a {
   margin: 10px 5px;
   font-weight: 400;
   transition: all 0.5s ease;
@@ -582,23 +366,7 @@ button {
   filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.479));
 }
 
-.navigation-bar > .links > ul > li > a {
-  transition: all 0.5s ease;
-  font-weight: 500;
-  filter: drop-shadow(0px 0px 1px transparent);
-}
-
-.navigation-bar > .links > ul > li > a:hover {
-  filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.479));
-  color: #001869;
-  padding: 0px;
-  margin: 0px;
-}
-
-.navigation-bar > .links > ul > li {
-  transition: all 0.5s ease;
-}
-
+/* ------------- THE CONTAINER OF logo & visitor count ------------- */
 .left-container {
   display: flex;
   align-items: center;
@@ -608,31 +376,7 @@ button {
   justify-content: center;
 }
 
-.visitors-count {
-  display: flex;
-  height: 100%;
-  gap: 10px;
-  align-items: center;
-  justify-items: center;
-  justify-content: space-between;
-  padding-inline: 4%;
-  align-items: center;
-  background-image: linear-gradient(120deg, var(--hover), var(--secondry));
-  border-radius: 50px;
-}
-
-.visitors-count > img {
-  height: 70%;
-}
-
-.visitors-count > p {
-  color: white;
-  margin: 0px;
-  font-weight: 200;
-  letter-spacing: 2px;
-  margin-bottom: 0px;
-}
-
+/* ------------- LOGO ------------- */
 .logo {
   display: flex;
   justify-content: center;
@@ -662,8 +406,150 @@ button {
   height: 50px;
 }
 
-/*---------------------  END of NAVIGATION BAR --------------------------*/
-/* --------------------------- HOME PAGE ----------------------- */
+/* ------------- VISITORS COUNT ------------- */
+.visitors-count {
+  display: flex;
+  height: 100%;
+  gap: 10px;
+  align-items: center;
+  justify-items: center;
+  justify-content: space-between;
+  padding-inline: 4%;
+  align-items: center;
+  background-image: linear-gradient(120deg, var(--hover), var(--secondry));
+  border-radius: 50px;
+}
+
+.visitors-count > img {
+  height: 70%;
+}
+
+.visitors-count > p {
+  color: white;
+  margin: 0px;
+  font-weight: 200;
+  letter-spacing: 2px;
+  margin-bottom: 0px;
+}
+
+/* ------------- NAVIGATION MEDIA QUERIES --------------- */
+/* ----- BIG to MEDIUM SCREENS -------- */
+@media (max-width: 1350px) {
+  .navigation-bar > .links > ul > li > a,
+  .education {
+    font-size: 0.9rem !important;
+  }
+}
+@media (max-width: 1250px) {
+  .navigation-bar {
+    padding-inline: 6% !important;
+    gap: 10%;
+  }
+
+  .education > .drop-down-menu {
+    display: none;
+  }
+
+  .left-container {
+    transform: scale(0.8);
+    transition: all 0.5s ease;
+    margin-right: 20px;
+  }
+}
+
+/* ------------- MEDIUM to SMALL SCREENS -------------- */
+@media (max-width: 980px) {
+  /* OVERALL MEDIA */
+  .navigation-bar {
+    padding: 0px !important;
+  }
+  /* HUMBERGER */
+  .ham {
+    display: block;
+    position: fixed;
+    z-index: 999999;
+  }
+  /* NAVIGATION LINKLS */
+  .navigation-bar > .links {
+    inset: 0 40% 0 0;
+    width: unset !important;
+  }
+  .navigation-bar > .links > ul {
+    position: fixed;
+    align-items: flex-start !important;
+    z-index: 99999;
+    top: 0px;
+    justify-content: flex-start !important;
+    height: 200vh;
+    width: 100% !important;
+    padding-left: 30px !important;
+    flex-direction: column;
+    text-align: unset !important;
+    padding: min(20vh) 2rem;
+    gap: 1.75rem !important;
+    background: hsla(0, 0%, 23%, 0.077) !important;
+    backdrop-filter: blur(1rem);
+    transform: translateX(-100%);
+  }
+  .education > a {
+    font-size: 1.25rem;
+  }
+  .primary-navigation[data-visible="true"] {
+    transform: translateX(0%) !important;
+  }
+  .navigation-bar > .links > ul > li > a {
+    font-size: 1.25rem !important;
+  }
+  .education:hover .drop-down-menu {
+    backdrop-filter: unset !important;
+    opacity: 1 !important;
+    pointer-events: visible;
+    left: 84px !important;
+  }
+  .education > .drop-down-menu {
+    background-image: linear-gradient(
+      to right,
+      transparent,
+      rgba(255, 255, 255, 0.475)
+    ) !important;
+    font-size: 1rem;
+    padding-left: 30px !important;
+    padding-top: 0px !important;
+    transition: all 0.5s;
+    top: -5px !important;
+    opacity: 0 !important;
+    left: 40px !important;
+    width: 240px !important;
+    height: 100px !important;
+    border-radius: 0px 5px 5px 0px !important;
+  }
+  /* left container (logo + visitor count) */
+  .logo {
+    margin-right: 60px;
+  }
+  .visitors-count {
+    display: none !important;
+  }
+}
+/* -------- SMALL SCREENS and LESS -------- */
+@media (max-width: 600px) {
+  .left-container {
+    align-items: center !important;
+    justify-content: flex-end !important;
+  }
+  .logo > a > p {
+    display: none !important;
+    justify-content: center !important;
+  }
+  .logo > a {
+    position: absolute !important;
+    right: 3% !important;
+  }
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* ================================ HOME PAGE ================================ */
+/* -------- HOME PAGE OVERALL STYLE ------- */
 .home-page {
   position: relative;
   height: 100vh;
@@ -671,7 +557,7 @@ button {
   width: 100%;
   overflow: hidden;
 }
-
+/* BACKGROUND */
 .background-image {
   height: 100%;
   width: 100%;
@@ -679,7 +565,6 @@ button {
   z-index: -200;
   top: 0px;
 }
-
 .background-image img {
   height: 100%;
   width: 100%;
@@ -687,7 +572,6 @@ button {
   object-position: center;
   filter: brightness(1.1);
 }
-
 .shades {
   height: 100%;
   width: 100%;
@@ -697,7 +581,7 @@ button {
   top: 0px;
   left: 0px;
 }
-
+/* MAIN TEXTS */
 .home-page-componants {
   z-index: 10;
   padding-left: 8%;
@@ -735,23 +619,18 @@ button {
   bottom: 5px;
   z-index: -1;
 }
-
 .secondary-text {
   width: 90%;
   line-height: 27px;
   font-size: 1.25rem;
   font-weight: 100;
 }
-/* ========= BUTTON STYLE ======== */
+
+/* BUTTON STYLE */
 .buttons {
   position: relative;
   display: flex;
 }
-
-.cont-button > button {
-  padding: 0px;
-}
-
 .buttons > button {
   width: 250px;
   font-size: 1.1rem;
@@ -787,7 +666,7 @@ button {
   transition: all 0.4s ease-in-out;
   color: white;
 }
-
+/* PAGE SAPERATOR */
 .page-saperatopr {
   position: absolute;
   bottom: 0px;
@@ -798,7 +677,7 @@ button {
   background-size: cover;
 }
 
-/* ============= APPOINTMENT MODEL =============== */
+/* ----------- APPOINTMENT MODEL ---------- */
 .model {
   background-color: white;
   position: fixed;
@@ -903,12 +782,16 @@ button {
   justify-content: center;
 }
 .sumbet-button button {
-  height: 40px;
   width: 130px;
-  font-size: 1rem;
-  font-weight: bold;
-  border-style: none;
-  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: black;
+  padding: 10px;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px 0 rgpa(49, 196, 190, 01.75rem);
+
   background-image: linear-gradient(
     120deg,
     var(--light),
@@ -916,18 +799,16 @@ button {
     var(--secondry),
     var(--primary)
   );
-  box-shadow: 0 4px 15px 0 rgpa(49, 196, 190, 01.75rem);
   moz-transition: all 0.4s ease-in-out; /* FOR MOZILA FIRE-FOX  */
   -o-transition: all 0.4s ease-in-out;
   -webkit-transition: all 0.4s ease-in-out;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
-.sumbet-button > button:focus {
+.buttons > button:focus {
   outline: #00ccff;
 }
 .sumbet-button button:hover {
   background-position: 100% 0;
-  moz-transition: all 0.4s ease-in-out; /* FOR MOZILA FIRE-FOX  */
   -o-transition: all 0.4s ease-in-out;
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
@@ -949,7 +830,119 @@ button {
   pointer-events: all;
 }
 
-/* --------------------------------- ABOUT US -------------------------------------------- */
+/* ------------- SCHEDUAL ------------- */
+.scheduals {
+  height: 100%;
+  width: 100px;
+  border-radius: 0px 0px 0px 0px;
+  padding: 15px;
+  position: absolute;
+  bottom: 0px;
+  right: 0;
+  align-content: center;
+  color: black;
+  text-align: end;
+  background-color: rgba(255, 255, 255, 0.449);
+  box-shadow: 5px 0px 30px 10px rgba(0, 0, 0, 0.166);
+  backdrop-filter: blur(20px);
+}
+.days h5 span {
+  font-size: 1.2rem;
+  font-weight: 200;
+}
+.days h5 {
+  font-weight: 1000;
+  font-size: 1rem;
+}
+.days p {
+  color: rgb(0, 0, 0);
+  font-size: 0.8rem;
+}
+.grid-box {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+/* ----------------------- HOME PAGE MEDIA QUERIES ---------------------- */
+/* ----- SPECIFIC QUERIES ------ */
+@media (max-height: 750px) and (max-width: 600px) {
+  .scheduals {
+    display: none !important;
+  }
+}
+@media (max-height: 520px) and (max-width: 920px) {
+  .scheduals {
+    display: none !important;
+  }
+}
+
+/* ------- MEDIUM to SMALL SCREENS -------- */
+@media (max-width: 980px) {
+  .scheduals {
+    width: 100%;
+    height: 120px;
+  }
+  .grid-box {
+    flex-direction: row !important;
+    gap: 10% !important;
+    align-items: center;
+    justify-content: center;
+  }
+  .home-page-componants > div {
+    width: 80% !important;
+  }
+}
+
+/* -------- SMALL SCREENS and LESS -------- */
+@media (max-width: 600px) {
+  .home-page-componants {
+    width: 100% !important;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0px;
+    padding-left: 0px !important;
+  }
+  .buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .secondary-text > p {
+    width: 100% !important;
+  }
+  .main-text > h1::before {
+    display: none;
+  }
+  .main-text > h1::after {
+    content: "";
+    display: none;
+  }
+}
+/* -------- ROTATED SMALL SCREENS (HEIGHT MEDIA) --------- */
+@media (max-height: 420px) {
+  .home-page-componants {
+    flex-direction: row !important;
+    padding-left: 0px !important;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    margin-top: 20px !important;
+    padding-right: 40px !important;
+  }
+  .home-page-componants {
+    transform: scale(0.9);
+  }
+  .navigation-bar {
+    padding-right: 40px !important;
+  }
+  .buttons {
+    position: unset !important;
+  }
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* ================================ ABOUT US  ================================ */
 .about-us {
   width: 80%;
   position: relative;
@@ -1037,6 +1030,7 @@ button {
   border: none;
 }
 
+/* BUTTON STYLES */
 .btn {
   position: relative;
   height: 50px;
@@ -1044,6 +1038,7 @@ button {
   text-align: left !important;
   padding-left: 10px;
   font-size: 1.2rem;
+  font-weight: 500 !important;
   color: var(--secondry) !important;
   text-transform: uppercase;
   transition: all 500ms cubic-bezier(0.77, 0, 0.175, 1) !important;
@@ -1102,8 +1097,31 @@ button {
 .about-us-content-container div:last-child {
   margin-bottom: 0;
 }
-/* -------------------------------- END of ABOUT US ------------------------------ */
-/* ----------------------------------- COMPANIES ------------------------------ */
+
+/* ---------------- ABOUT US MEDIA QUERIES --------------- */
+/* ----- MEDIUM to SMALL SCREENS ------ */
+@media (max-width: 980px) {
+  .about-us {
+    display: flex;
+    flex-direction: column;
+  }
+  .pics {
+    width: unset !important;
+    height: unset !important;
+    margin-top: 50px !important;
+  }
+  .about-us > .text-elements {
+    width: unset !important;
+    height: 100% !important;
+    padding-top: 0px !important ;
+  }
+}
+
+/* ----- SMALL SCREENS and LESS ------ */
+/* NONE */
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* ========================= COMPANIES ========================== */
 .companies {
   height: 150px;
   width: 100%;
@@ -1120,6 +1138,7 @@ button {
   left: 50%;
   transform: translateY(-50%);
 }
+/* INFINTE SCROLL */
 .scroller {
   width: 1400px;
 }
@@ -1176,9 +1195,12 @@ button {
   object-fit: contain;
   object-position: center;
 }
-/* ----------------------------------- END of COMPANIES -------------------------- */
 
-/* ----------------------------------- PATIENT EDUCATION -------------------------- */
+/* NO MEDIA QUERY */
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* ========================= PATIENT EDUCATION ========================== */
+/* OVERALL STYLE */
 #patient-education {
   position: relative;
   background-color: rgba(255, 255, 255, 0.747);
@@ -1192,6 +1214,7 @@ button {
   gap: 30px;
 }
 
+/* INTRO */
 .patient-education-intro {
   width: 100%;
   display: flex;
@@ -1235,10 +1258,10 @@ button {
   padding: 5px;
 }
 
-/* ---------------------------------- END of PATIENT EDUCATION ------------------------------ */
+/* NO MEDIA QUERY */
 
-/* ---------------------------------- Professional Style ------------------------------ */
-
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* ================================ PROFESSIONAL EDUCATION  ================================ */
 h2.separator {
   padding: 0 80px;
   font-size: var(--name-of-section);
@@ -1328,7 +1351,7 @@ h2.separator span {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  animation: fade-up 0.5s ease forwards;
+  /* animation: fade-up 0.5s ease forwards; */
   transition: all 0.3s ease;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
@@ -1458,9 +1481,10 @@ h2.separator span {
   }
 }
 
-/* ===============================End Of Professional Section=================================================  */
+/* NO MEDIA QUERY */
 
-/* ====================== Products Styles================================================================================== */
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* ================================ PRODUCTS  ================================ */
 .rating {
   border-bottom: 1px solid #edecec;
   display: flex;
@@ -1487,68 +1511,10 @@ h2.separator span {
   margin-left: 20px;
 }
 
-/* ======================End of products Styles================================================================================== */
+/* NO MEDIA QUERY */
 
-/* ===============================Start Of Research Section=================================================  */
-#blog {
-  margin-bottom: 95px;
-}
-
-.title {
-  margin-top: 60px;
-  margin-bottom: 16px;
-  text-shadow: 2px 2px 9px rgba(0, 0, 0, 0.395);
-  font-size: 40px;
-}
-
-.title span {
-  color: #00ccff;
-  text-shadow: 2px 2px 9px #00ccff;
-}
-
-.row.flex-nowrap {
-  display: flex;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-}
-
-.row.flex-nowrap::-webkit-scrollbar {
-  display: none;
-}
-
-.col-lg-4 {
-  flex: 0 0 auto;
-  width: 300px;
-}
-
-.scroll-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.7);
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  z-index: 10;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.left-btn {
-  left: -20px;
-}
-
-.right-btn {
-  right: -20px;
-}
-
-/* ===============================The End Of Research Section=================================================  */
-
-/* =============================== GALLARY =================================================  */
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* ================================ GALLARY  ================================ */
 .gallary {
   padding: 20px;
   margin: 0px;
@@ -1632,10 +1598,75 @@ h2.separator span {
 .card-wide-two {
   grid-column: span 2 / auto;
 }
+/* ------- GALLARY MERIA QUERY ----------- */
+/* SPECIFIC MEDIA QUERIES  */
+@media (max-width: 600px) {
+  .media-selected {
+    grid-column: span 3 / auto !important;
+  }
+}
 
-/* =============================== END of GALLARY =================================================  */
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* ================================ RESEARCH  ================================ */
+#blog {
+  margin-bottom: 95px;
+}
 
-/* ===============================Start Of Contact-Us Section=================================================  */
+.title {
+  margin-top: 60px;
+  margin-bottom: 16px;
+  text-shadow: 2px 2px 9px rgba(0, 0, 0, 0.395);
+  font-size: 40px;
+}
+
+.title span {
+  color: #00ccff;
+  text-shadow: 2px 2px 9px #00ccff;
+}
+
+.row.flex-nowrap {
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+.row.flex-nowrap::-webkit-scrollbar {
+  display: none;
+}
+
+.col-lg-4 {
+  flex: 0 0 auto;
+  width: 300px;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-btn {
+  left: -20px;
+}
+
+.right-btn {
+  right: -20px;
+}
+/* NO MEDIA QUERY */
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* ================================ CONTACT US  ================================ */
 #contact .container .row .col-lg-6 .text-center h3 {
   margin-top: 50px;
   text-shadow: 2px 2px 9px rgba(0, 0, 0, 0.395);
@@ -1650,32 +1681,6 @@ h2.separator span {
 #contact {
   margin-bottom: 20px;
   width: 100%;
-}
-
-#submit {
-  width: 185px;
-  height: 50px;
-  border-radius: 3px;
-  background-color: var(--primary);
-  border: 1px solid #5a4fdc !important;
-  color: #fff;
-  box-shadow: 0 4px 20px rgba(90, 79, 220, 0.15);
-  transition: 0.5s;
-}
-
-@media only screen and (max-width: 413px) {
-  #submit {
-    width: 150px;
-    font-size: 15px;
-    text-align: center;
-  }
-}
-
-#submit:hover {
-  background-color: rgb(67, 62, 62);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.423);
-  background-color: #0a1536 !important;
 }
 
 .form-control:focus {
@@ -1733,8 +1738,10 @@ textarea.form-control {
   border: 1px solid rgba(158, 156, 185, 0.3);
 }
 
-/* ===============================End Of Contact-Us Section=================================================  */
-/* ===============================Start Of Footer Section=================================================  */
+/* NO MEDIA QUERY */
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* ================================ FOOTER  ================================ */
 
 .footer {
   background: rgba(248, 249, 250, 1);
@@ -1823,5 +1830,6 @@ textarea.form-control {
   }
 }
 
-/* ===============================End Of Footer Section=================================================  */
+/* NO MEDIA QUERY */
 /* ''''''''''''''''''''''''''''''''// FREE PALESINE //'''''''''''''''''''''''''''''''''''''' */
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------- */

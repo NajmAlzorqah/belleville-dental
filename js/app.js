@@ -1,13 +1,21 @@
 // ---------------- PAGE LOADER ---------------------
+// Wait for the window to finish loading all resources
 window.addEventListener("load", function () {
   var loader = document.getElementById("loader");
   loader.classList.add("hide");
 });
 
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // ---------------- SCROLL ANIMATION ---------------------
+// SLIDE RIGHT SCROLL ANIMATION
+// Create a new IntersectionObserver instance that monitors visibility changes.
 const observer = new IntersectionObserver((entries) => {
+  // Iterate through each entry (element) that intersects with the viewport.
   entries.forEach((entry) => {
+    // Output each entry information to the console for debugging.
     console.log(entry);
+
+    // Check if the observed element is currently intersecting with the viewport.
     if (entry.isIntersecting) {
       entry.target.classList.add("show");
     } else {
@@ -16,12 +24,20 @@ const observer = new IntersectionObserver((entries) => {
   });
 });
 
+// Select all elements with the 'hidden' class in the document.
 const hiddenElements = document.querySelectorAll(".hidden");
+// Observe each hidden element for visibility changes using the IntersectionObserver.
 hiddenElements.forEach((el) => observer.observe(el));
-// ----------------------------------
+
+// OPACITY SCROLL ANIMATION
+// Create a new IntersectionObserver instance to monitor visibility changes.
 const observerTwo = new IntersectionObserver((entriesTwo) => {
+  // Iterate through each entry (element) observed by the IntersectionObserver.
   entriesTwo.forEach((entryOne) => {
+    // Log each entry's information to the console for debugging purposes.
     console.log(entryOne);
+
+    // Check if the observed element is currently intersecting with the viewport.
     if (entryOne.isIntersecting) {
       entryOne.target.classList.add("show-opacity");
     } else {
@@ -30,38 +46,23 @@ const observerTwo = new IntersectionObserver((entriesTwo) => {
   });
 });
 
+// Select all elements with the 'opacity-element' class in the document.
 const opacityElements = document.querySelectorAll(".opacity-element");
+// Observe each element for visibility changes using the IntersectionObserver.
 opacityElements.forEach((elo) => observerTwo.observe(elo));
 
-// ------------------- COMPAINES INFINITE SCROLL ANIMATION --------------------
-const scrollers = document.querySelectorAll(".scroller");
-if (!window.matchMedia("(prefers-reduced-motion: reduse)").matches) {
-  addAnimation();
-}
-function addAnimation() {
-  scrollers.forEach((scroller) => {
-    scroller.setAttribute("data-animated", true);
-
-    const scrollerInner = scroller.querySelector(".scroller__inner");
-    const scrollerContent = Array.from(scrollerInner.children);
-
-    scrollerContent.forEach((item) => {
-      const duplicatedItem = item.cloneNode(true);
-      duplicatedItem.setAttribute("aria-hidden", true);
-      scrollerInner.appendChild(duplicatedItem);
-    });
-  });
-}
-
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // ---------------- NAVIGATION TOGGLE ---------------------
-// This section toggles the visibility of the navigation menu on mobile devices.
-
+// Select the primary navigation container and the mobile navigation toggle button.
 const primaryNav = document.querySelector(".primary-navigation");
 const navToggle = document.querySelector(".mobile-nav-toggle");
+
+// Select all links inside the primary navigation for event handling.
 const navLinks = document.querySelectorAll(".primary-navigation");
 
+// Event listener for the mobile navigation toggle button.
 navToggle.addEventListener("click", () => {
-  // This event listener toggles the visibility attribute of the primary navigation element when the toggle button is clicked.
+  // Toggle the visibility state of the primary navigation based on its data-visible attribute.
   const visibility = primaryNav.getAttribute("data-visible");
 
   if (visibility === "false") {
@@ -70,20 +71,22 @@ navToggle.addEventListener("click", () => {
     primaryNav.setAttribute("data-visible", false);
   }
 });
+
+// Event listener for each link inside the primary navigation.
 navLinks.forEach((link) => {
   link.addEventListener("click", () => {
+    // When a link is clicked, hide the primary navigation by setting data-visible to false.
     primaryNav.setAttribute("data-visible", false);
   });
 });
 
-// --------------------------------------------------------------------------------
-// JavaScript to handle hamburger menu toggle
+// Function to toggle the hamburger menu icon's active state.
 function toggleMenu() {
   var ham = document.querySelector(".ham");
   ham.classList.toggle("active");
 }
 
-// Reset hamburger menu when clicking on any link inside .primary-navigation
+// Reset the hamburger menu when clicking on any link inside the primary navigation.
 var links = document.querySelectorAll(".primary-navigation a");
 links.forEach(function (link) {
   link.addEventListener("click", function () {
@@ -92,18 +95,25 @@ links.forEach(function (link) {
   });
 });
 
-// Reset hamburger menu when clicking anywhere inside .primary-navigation
+// Reset the hamburger menu when clicking anywhere inside the primary navigation area.
 var primaryNavigation = document.querySelector(".primary-navigation");
 primaryNavigation.addEventListener("click", function () {
   var ham = document.querySelector(".ham");
   ham.classList.remove("active");
 });
 
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // ---------------- VISTOR COUNT ---------------------
 const visitorCountElement = document.getElementById("visitor-count");
+
+// Retrieve visitor count from localStorage; default to 0 if not set
 let visitorCount = localStorage.getItem("visitor-count") || 0;
 visitorCount++;
+
+// Store the updated visitor count back into localStorage
 localStorage.setItem("visitor-count", visitorCount);
+
+// Update the displayed visitor count on the webpage
 visitorCountElement.textContent = visitorCount;
 
 // ---------------- APPOINTMENT MODEL ---------------------
@@ -111,6 +121,7 @@ const openModelButton = document.querySelectorAll("[data-model-target]");
 const closeModelButton = document.querySelectorAll("[data-close-button]");
 const overlay = document.getElementById("overlay");
 
+// Add click event listeners to each element that opens a modal
 openModelButton.forEach((button) => {
   button.addEventListener("click", () => {
     const model = document.querySelector(button.dataset.modelTarget);
@@ -118,6 +129,7 @@ openModelButton.forEach((button) => {
   });
 });
 
+// Add click event listener to the overlay to close all open modals
 overlay.addEventListener("click", () => {
   const models = document.querySelectorAll(".model.active");
   models.forEach((model) => {
@@ -125,6 +137,7 @@ overlay.addEventListener("click", () => {
   });
 });
 
+// Add click event listeners to each element that closes a modal
 closeModelButton.forEach((button) => {
   button.addEventListener("click", () => {
     const model = button.closest(".model");
@@ -132,18 +145,48 @@ closeModelButton.forEach((button) => {
   });
 });
 
+// Function to open a modal
 function openModel(model) {
   if (model == null) return;
   model.classList.add("active");
   overlay.classList.add("active");
 }
 
+// Function to close a modal
 function closeModel(model) {
   if (model == null) return;
   model.classList.remove("active");
   overlay.classList.remove("active");
 }
 
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ------------------- COMPAINES INFINITE SCROLL ANIMATION --------------------
+// Select all elements with the class "scroller"
+const scrollers = document.querySelectorAll(".scroller");
+
+// Check if the user prefers reduced motion
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  addAnimation();
+}
+
+// Function to add animation to scrollers
+function addAnimation() {
+  scrollers.forEach((scroller) => {
+    scroller.setAttribute("data-animated", true);
+
+    const scrollerInner = scroller.querySelector(".scroller__inner");
+    const scrollerContent = Array.from(scrollerInner.children);
+
+    // Duplicate each item in the scroller content
+    scrollerContent.forEach((item) => {
+      const duplicatedItem = item.cloneNode(true);
+      duplicatedItem.setAttribute("aria-hidden", true);
+      scrollerInner.appendChild(duplicatedItem);
+    });
+  });
+}
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //-----------------Smooth Scrolling with Offset Adjustment ----------------
 
 // Event listener for when the HTML document is fully loaded and parsed
